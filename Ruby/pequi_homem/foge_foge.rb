@@ -14,7 +14,7 @@ def encontra_jogador(mapa)
       return[linha, coluna_do_heroi]
     end              
   end
-  #nao achei!!!
+  #nao achei!
 end
 
 def calcula_nova_posicao(heroi, direcao)
