@@ -6,7 +6,7 @@ def da_boas_vindas #asc-art
   puts "  |' '  |  |_|  |'  ' |                        "
   puts "  |_____| ' _ ' |_____|                        " 
   puts "        \\__|_|__/                              "
-  puts "Qual é o seu nome jogador?"
+  puts "Qual é o seu nome?"
   nome = gets.strip
   puts "\n\n\n\n\n\n"
   puts "Começaremos o jogo para você, #{nome}."
