@@ -60,24 +60,7 @@ def posicoes_validas_a_partir_de(mapa, novo_mapa, posicao)
       posicoes << possivel_posicao
     end
   end
-=begin 
-  baixo = [posicao[0] + 1, posicao[1]]
-  if posicao_valida?(mapa, baixo) && posicao_valida?(novo_mapa, baixo)
-    posicoes << baixo
-  end
-  direita = [posicao[0], posicao[1] + 1]
-  if posicao_valida?(mapa, direita) && posicao_valida?(novo_mapa, direita)
-    posicoes << direita
-  end
-  cima = [posicao[0] - 1, posicao[1]]
-  if posicao_valida?(mapa, cima) && posicao_valida?(novo_mapa, cima)
-    posicoes << cima
-  end
-  esquerda = [posicao[0], posicao[1] -1]
-  if posicao_valida?(mapa, esquerda) && posicao_valida?(novo_mapa, esquerda)
-    posicoes << esquerda
-  end
-=end
+
 posicoes
 end
 
