@@ -38,7 +38,7 @@ def ganhou
   puts "         OOOOOO         OOOOOO         "
   puts "             OOOOOOOOOOOO              "
   puts
-  puts "               Acertou, Jogador!                "
+  puts "               Acertou!                "
   puts
 end
 
