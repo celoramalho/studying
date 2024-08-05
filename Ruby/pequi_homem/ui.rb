@@ -18,5 +18,6 @@ end
 
 def game_over(nome)
   puts "\n\n\n\n\n"
+  puts "GAME OVER"
   puts "Que pena, você perdeu #{nome}!"
 end
