@@ -15,17 +15,16 @@ class Heroi
     heroi
   end
 
+  def to_array
+    [linha, coluna]
+  end
+
+  def remove_do(mapa)
+    mapa[linha][coluna] = " "
+  end
+
+  def coloca_no(mapa)
+    mapa[linha][coluna] = "H"
+  end
+
 end
-=begin
-guilherme = Heroi.new
-guilherme.linha = 15
-guilherme.coluna = 3
-
-puts "O guilherme está em #{guilherme.linha} #{guilherme.coluna}"
-puts guilherme
-
-carlos = Heroi.new
-carlos.linha = 6
-carlos.coluna  = 18
-=end
-

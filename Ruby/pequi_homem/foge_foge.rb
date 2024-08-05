@@ -98,15 +98,13 @@ def joga(nome)
     direcao = pede_movimento
     heroi = encontra_jogador mapa #objeto
     nova_posicao = heroi.calcula_nova_posicao direcao #objeto
-    nova_posicao2 = [nova_posicao.linha, nova_posicao.coluna] #não é a melhor maneira de fazer isso
-    #uts nova_posicao2
 
-    if !posicao_valida? mapa, nova_posicao2 # passa objeto
+    if !posicao_valida? mapa, nova_posicao.to_array# passa objeto
       next
     end
 
-    mapa[heroi.linha][heroi.coluna] = " "
-    mapa[nova_posicao.linha][nova_posicao.coluna] = "H"
+    heroi.remove_do mapa
+    nova_posicao.coloca_no mapa
 
     mapa = move_fantasmas mapa
 
