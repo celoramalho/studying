@@ -91,7 +91,7 @@ end
 
 def joga(nome)
    #nosso jogo aqui
-  mapa = le_mapa 2
+  mapa = le_mapa 3
 
   while true
     desenha mapa
@@ -99,11 +99,18 @@ def joga(nome)
     heroi = encontra_jogador mapa #objeto
     nova_posicao = heroi.calcula_nova_posicao direcao #objeto
 
-    if !posicao_valida? mapa, nova_posicao.to_array# passa objeto
+    if !posicao_valida? mapa, nova_posicao.to_array
       next
     end
 
     heroi.remove_do mapa
+    if mapa[nova_posicao.linha][nova_posicao.coluna] == "*"
+        mapa[nova_posicao.linha][nova_posicao.coluna + 1] = " "
+        mapa[nova_posicao.linha][nova_posicao.coluna + 2] = " "
+        mapa[nova_posicao.linha][nova_posicao.coluna + 3] = " "
+        mapa[nova_posicao.linha][nova_posicao.coluna + 4] = " "
+    end
+    
     nova_posicao.coloca_no mapa
 
     mapa = move_fantasmas mapa
