@@ -105,10 +105,9 @@ def joga(nome)
 
     heroi.remove_do mapa
     if mapa[nova_posicao.linha][nova_posicao.coluna] == "*"
-        mapa[nova_posicao.linha][nova_posicao.coluna + 1] = " "
-        mapa[nova_posicao.linha][nova_posicao.coluna + 2] = " "
-        mapa[nova_posicao.linha][nova_posicao.coluna + 3] = " "
-        mapa[nova_posicao.linha][nova_posicao.coluna + 4] = " "
+        for direita in 1..4
+          mapa[nova_posicao.linha][nova_posicao.coluna + direita] = " "
+        end
     end
     
     nova_posicao.coloca_no mapa
