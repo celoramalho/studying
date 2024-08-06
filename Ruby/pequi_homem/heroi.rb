@@ -14,6 +14,10 @@ class Heroi
     heroi.coluna += movimento[1] #COLUNA
     heroi
   end
+  
+  def direita
+    calcula_nova_posicao "D"
+  end
 
   def to_array
     [linha, coluna]
