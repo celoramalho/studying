@@ -90,10 +90,12 @@ def jogador_perdeu?(mapa)
 end
 
 def remove (mapa, posicao, quantidade)
-  for direita in 1..quantidade
-    posicao = posicao.direita
-    posicao.remove_do mapa
-  end
+    if quantidade > 0
+      puts "Uai + #{quantidade}"
+      posicao = posicao.direita
+      posicao.remove_do mapa
+      remove mapa, posicao, quantidade - 1
+    end
 end
 
 def joga(nome)
