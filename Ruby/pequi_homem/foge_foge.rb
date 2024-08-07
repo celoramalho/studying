@@ -32,7 +32,7 @@ def posicao_valida?(mapa, posicao)
   end
 
   valor_atual = mapa[posicao[0]][posicao[1]]
-  if valor_atual == "X" || valor_atual == "F"
+  if valor_atual == "X" || valor_atual == "G"
     return false
   end
   true
@@ -51,7 +51,6 @@ def posicoes_validas_a_partir_de(mapa, novo_mapa, posicao)
       posicoes << possivel_posicao
     end
   end
-
 posicoes
 end
 
@@ -90,8 +89,8 @@ def jogador_perdeu?(mapa)
 end
 
 def executa_remocao(mapa, posicao, quantidade)
-  return if mapa[posicao.linha][posicao.coluna] == "X"
-  puts "Uai"
+  return if !posicao_valida? mapa, posicao.to_array
+  return if mapa[posicao.linha][posicao.coluna] == "H"
   posicao.remove_do mapa
   remove mapa, posicao, quantidade - 1
 end
@@ -99,6 +98,9 @@ end
 def remove (mapa, posicao, quantidade)
   return if quantidade == 0
   executa_remocao mapa, posicao.direita, quantidade
+  executa_remocao mapa, posicao.cima, quantidade
+  executa_remocao mapa, posicao.esquerda, quantidade
+  executa_remocao mapa, posicao.baixo, quantidade
 end
 
 def joga(nome)
