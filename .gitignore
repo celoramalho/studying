@@ -3,3 +3,6 @@ env-automaciones/
 .venv/
 env-automaciones2/
 Python/Learning_Some_Libraries/private_data.txt
+Python/Learning_Some_Libraries/test_users_data.txt
+Python/Learning_Some_Libraries/test_users_data.yaml
+Python/Learning_Some_Libraries/test_users_data.yml
