@@ -23,10 +23,28 @@ class Conta:
         """
         # O método é chamado automaticamente ao criar uma instância da classe
         print("Construindo objeto... {}".format(self))  # Exibe uma mensagem indicando a criação do objeto
-        self.numero = numero  # Atributo 'numero' armazena o número da conta
-        self.titular = titular  # Atributo 'titular' armazena o nome do titular
-        self.saldo = saldo  # Atributo 'saldo' armazena o saldo inicial
-        self.limite = limite  # Atributo 'limite' armazena o limite da conta
+        self.__numero = numero  # Atributo 'numero' armazena o número da conta
+        self.__titular = titular  # Atributo 'titular' armazena o nome do titular
+        self.__saldo = saldo  # Atributo 'saldo' armazena o saldo inicial
+        self.__limite = limite  # Atributo 'limite' armazena o limite da conta
+
+# No Python não existe private, mas podemos usar o underline para indicar que o atributo ou método deve ser tratado como privado.
+# Isso é chamado de encapsulamento, onde as partes internas da classe podem ser acessadas, mas não devem ser modificadas diretamente.
+# Encapsulamento:
+# O encapsulamento é um princípio da orientação a objetos que visa proteger os dados internos de uma classe,
+# restringindo o acesso direto a atributos e métodos que não devem ser modificados ou utilizados fora dela.
+# 
+# No Python, não existem modificadores de acesso como "private" ou "protected". No entanto, há convenções:
+# - Um único underscore (_): Indica que o atributo ou método é "privado" e não deve ser acessado diretamente.
+# - Dois underscores (__): Ativam o name mangling, renomeando o atributo internamente para evitar acessos acidentais.
+#
+# Boas práticas:
+# - Use métodos públicos (getters e setters) para acessar ou modificar atributos "privados".
+# - Respeite as convenções (_ e __) para manter o código claro e seguro.
+# 
+# Exemplo:
+# self._atributo (indica que é privado, mas pode ser acessado com cuidado)
+# self.__atributo (é renomeado internamente, dificultando o acesso direto)
 
     def extrato(self):
         """
@@ -34,16 +52,16 @@ class Conta:
 
         Este método usa os atributos do objeto para exibir as informações da conta.
         """
-        print("Saldo {} do titular {}".format(self.saldo, self.titular))
+        print("Saldo {} do titular {}".format(self.__saldo, self.__titular))
 
     def depositar(self, valor):
-    """
-    Método para adicionar um valor ao saldo da conta.
+        """
+        Método para adicionar um valor ao saldo da conta.
 
-    Args:
-    - valor (float): Valor a ser depositado.
-    """
-    self.saldo += valor  # Adiciona o valor ao saldo atual
+        Args:
+        - valor (float): Valor a ser depositado.
+        """
+        self.__saldo += valor  # Adiciona o valor ao saldo atual
 
     def sacar(self, valor):
         """
@@ -52,7 +70,7 @@ class Conta:
         Args:
         - valor (float): Valor a ser retirado.
         """
-        self.saldo -= valor  # Subtrai o valor do saldo atual
+        self.__saldo -= valor  # Subtrai o valor do saldo atual
 
 
 # Conceitos Adicionais:
