@@ -54,7 +54,7 @@ class Conta:
         """
         print("Saldo {} do titular {}".format(self.__saldo, self.__titular))
 
-    def depositar(self, valor):
+    def deposita(self, valor):
         """
         Método para adicionar um valor ao saldo da conta.
 
@@ -63,7 +63,7 @@ class Conta:
         """
         self.__saldo += valor  # Adiciona o valor ao saldo atual
 
-    def sacar(self, valor):
+    def saca(self, valor):
         """
         Método para retirar um valor do saldo da conta.
 
@@ -72,7 +72,24 @@ class Conta:
         """
         self.__saldo -= valor  # Subtrai o valor do saldo atual
 
+    def transfere(self, conta_destino, valor):
+        self.saca(valor)
+        conta_destino.deposita(valor)
+        print("{valor} transferido para {conta_destino}".format(conta_destino=conta_destino, valor=valor))
 
+    def get_saldo(self):
+        return self.__saldo
+    
+    def get_titular(self):
+        return self.__titular
+    
+    @property
+    def limite(self):            #def get_limite(self):
+        return self.__limite
+
+    @limite.setter
+    def limite(self, limite):
+        self.__limite = limite
 # Conceitos Adicionais:
 
 # Criando um objeto da classe Conta:
