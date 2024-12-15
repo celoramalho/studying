@@ -22,18 +22,13 @@ class ProgramaDeTV:
 
 class Filme(ProgramaDeTV):
     def __init__(self, nome, ano, duracao):
-        self._nome = nome.title() #_ProgramaDeTV__nome if name engling is used like __name
-        self.ano = ano
+        super().__init__(nome, ano)
         self.duracao = duracao
-        self._likes = 0
-
 
 class Serie(ProgramaDeTV):
     def __init__(self, nome, ano, temporadas):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
         self.temporadas = temporadas
-        self._likes = 0
 
 
 vingadores = Filme("vingadores - guerra infinita", 2018, 160)
@@ -50,3 +45,6 @@ atlanta.dar_like()
 print(
     f"Nome: {atlanta.nome} - Ano: {atlanta.ano} - Temporadas: {atlanta.temporadas} - Likes: {atlanta.likes}"
 )  # print(atlanta.nome)
+
+
+#Pythonic
