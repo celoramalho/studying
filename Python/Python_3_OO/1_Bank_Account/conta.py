@@ -8,7 +8,7 @@ class Conta:
     - Atributos: São as características (ou propriedades) que um objeto possui.
     - Métodos: São as funções definidas dentro de uma classe que representam o comportamento de seus objetos.
     """
-
+    teste_de_atributo_simples = "É simples mesmo"
     def __init__(self, numero, titular, saldo, limite) -> None:
         """
         Método Construtor: Inicializa os atributos de um objeto da classe Conta.
@@ -27,6 +27,7 @@ class Conta:
         self.__titular = titular  # Atributo 'titular' armazena o nome do titular
         self.__saldo = saldo  # Atributo 'saldo' armazena o saldo inicial
         self.__limite = limite  # Atributo 'limite' armazena o limite da conta
+        self.__codigo_banco = "001"
 
 # No Python não existe private, mas podemos usar o underline para indicar que o atributo ou método deve ser tratado como privado.
 # Isso é chamado de encapsulamento, onde as partes internas da classe podem ser acessadas, mas não devem ser modificadas diretamente.
@@ -90,11 +91,47 @@ class Conta:
     
     @property
     def limite(self):            #def get_limite(self):
+        """
+        Decorator @property:
+        - Transforma o método 'limite()' em um getter.
+        - Permite acessar 'conta.limite' como se fosse um atributo público.
+        - Útil para adicionar lógica ou restrições ao acesso de atributos privados.
+        
+        Exemplo:
+        conta = Conta(1000)
+        print(conta.limite)  # Acessa o valor do atributo '__limite' indiretamente.
+        """
         return self.__limite
 
     @limite.setter
     def limite(self, limite):
+        """
+        Decorator @setter:
+        - Usado em conjunto com @property para definir um setter para o atributo privado.
+        - Permite alterar 'conta.limite' como se fosse um atributo público.
+        - Útil para validações ou modificações antes de atualizar o valor do atributo.
+        
+        Exemplo:
+        conta.limite = 2000  # Atualiza o valor do atributo '__limite' com controle.
+        """
         self.__limite = limite
+    
+    @staticmethod #decorator Metodo estatico
+    def codigo_banco():
+        """
+        Decorator @staticmethod:
+        - Define um método que não depende de nenhuma instância ou atributo da classe.
+        - Pode ser chamado diretamente pela classe, sem a necessidade de criar um objeto.
+        - Não usa o argumento 'self' nem 'cls'.
+        
+        Exemplo:
+        print(Conta.codigo_banco())  # Retorna "001".
+        """
+        return "001"
+    
+    @staticmethod
+    def codigos_bancos():
+        return {"BB": "001", "Caixa": "104", "Bradesco": "237"}
 # Conceitos Adicionais:
 
 # Criando um objeto da classe Conta:

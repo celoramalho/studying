@@ -2,6 +2,7 @@ temp/
 env-automaciones/
 .venv/
 env-automaciones2/
+**/__pycache__/
 Python/Learning_Some_Libraries/private_data.txt
 Python/Learning_Some_Libraries/test_users_data.txt
 Python/Learning_Some_Libraries/test_users_data.yaml
