@@ -1,24 +1,35 @@
 class Filme:
-    def __init__(self, nome, ano, duracao, likes):
-        self.nome = nome.capitalize()
+    def __init__(self, nome, ano, duracao):
+        self.nome = nome.title()
         self.ano = ano
         self.duracao = duracao
-        self.likes = likes
+        self.likes = 0
 
+    def dar_like(self):
+        self.likes += 1
+   
 
 class Serie:
-    def __init__(self, nome, ano, temporadas, likes):
-        self.nome = nome
+    def __init__(self, nome, ano, temporadas):
+        self.nome = nome.title()
         self.ano = ano
         self.temporadas = temporadas
-        self.like = likes
+        self.likes = 0
+
+    def dar_like(self):
+        self.likes += 1
 
 
-vingadores = Filme("vingadores - guerra infinita", 2018, 160, 100)
-
-print( f"Nome: {vingadores.nome} - Ano: {vingadores.ano} - Duração: {vingadores.duracao}")
-
-atlanta = Serie("atlanta", 2018, 2, 75)
+vingadores = Filme("vingadores - guerra infinita", 2018, 160)
+vingadores.dar_like()
 print(
-    f"Nome: {atlanta.nome} - Ano: {atlanta.ano} - Temporadas: {atlanta.temporadas}"
+    f"Nome: {vingadores.nome} - Ano: {vingadores.ano} - Duração: {vingadores.duracao} - Likes: {vingadores.likes}"
+)
+
+
+atlanta = Serie("atlanta", 2018, 2)
+atlanta.dar_like()
+atlanta.dar_like()
+print(
+    f"Nome: {atlanta.nome} - Ano: {atlanta.ano} - Temporadas: {atlanta.temporadas} - Likes: {atlanta.likes}"
 )  # print(atlanta.nome)
