@@ -70,7 +70,10 @@ class Conta:
         Args:
         - valor (float): Valor a ser retirado.
         """
-        self.__saldo -= valor  # Subtrai o valor do saldo atual
+        if valor <= (self.__saldo + self.__limite):
+            self.__saldo -= valor
+        else:
+            print("Saldo insuficiente")  # Subtrai o valor do saldo atual
 
     def transfere(self, conta_destino, valor):
         self.saca(valor)
