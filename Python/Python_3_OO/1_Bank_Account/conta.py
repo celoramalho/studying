@@ -62,7 +62,9 @@ class Conta:
         - valor (float): Valor a ser depositado.
         """
         self.__saldo += valor  # Adiciona o valor ao saldo atual
-
+    def __pode_sacar(self, valor_a_sacar):
+        valor_disponivel_a_sacar = self.__saldo + self.__limite
+        return valor_a_sacar <= valor_disponivel_a_sacar
     def saca(self, valor):
         """
         Método para retirar um valor do saldo da conta.
@@ -70,7 +72,7 @@ class Conta:
         Args:
         - valor (float): Valor a ser retirado.
         """
-        if valor <= (self.__saldo + self.__limite):
+        if self.__pode_sacar(valor):
             self.__saldo -= valor
         else:
             print("Saldo insuficiente")  # Subtrai o valor do saldo atual
