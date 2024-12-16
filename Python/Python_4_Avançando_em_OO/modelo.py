@@ -47,10 +47,18 @@ class Serie(ProgramaDeTV):
     def __str__(self):
         return f"{self._nome} - {self.ano} - {self.temporadas} seasons - {self._likes} Likes" 
 
-class Playlist(list): #Import list from Python Standard Library
+class Playlist():
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
+    
+    @property
+    def listagem(self):
+        return self._programas
+    
+    @property
+    def tamanho(self):
+        return len(self._programas)
 
 
 vingadores = Filme("vingadores - guerra infinita", 2018, 160)
@@ -70,9 +78,9 @@ atlanta.dar_like()
 filmes_e_series = [vingadores, atlanta, demolidor, tmep]
 playlist_fim_de_semana = Playlist("fim de semana", filmes_e_series)
 
-print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
+print(f'Tamanho da playlist: {playlist_fim_de_semana.tamanho}')
 
-for programa in playlist_fim_de_semana: #Polimorfismo
+for programa in playlist_fim_de_semana.listagem: #Polimorfismo
     print(programa) #Calls __str__
 
-print(f"Tá ou não tá? {demolidor in playlist_fim_de_semana}")
+print(f"Tá ou não tá? {demolidor in playlist_fim_de_semana.listagem}")
