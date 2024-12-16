@@ -20,6 +20,9 @@ class ProgramaDeTV:
     def dar_like(self):
         self._likes += 1
 
+    def imprime(self):
+        print(f"{self._nome} - {self.ano} - {self._likes} Likes") 
+
 
 # Subclass (child class) for movies, inheriting from ProgramaDeTV
 class Filme(ProgramaDeTV):
@@ -28,6 +31,9 @@ class Filme(ProgramaDeTV):
         # 'super()' allows the child class to call methods from the parent class
         super().__init__(nome, ano)
         self.duracao = duracao
+
+    def imprime(self):
+        print(f"{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes")
 
 
 # Subclass (child class) for series, inheriting from ProgramaDeTV
@@ -38,24 +44,19 @@ class Serie(ProgramaDeTV):
         # Adds an additional attribute specific to series
         self.temporadas = temporadas  # Extends functionality with a new attribute
 
+    def imprime(self):
+        print(f"{self._nome} - {self.ano} - {self.temporadas} seasons - {self._likes} Likes") 
+
 
 vingadores = Filme("vingadores - guerra infinita", 2018, 160)
 vingadores.dar_like()
-print(
-    f"{vingadores.nome} - {vingadores.ano} - {vingadores.duracao}min: {vingadores.likes}"
-) 
+
 
 atlanta = Serie("atlanta", 2018, 2)
 atlanta.dar_like()
 atlanta.dar_like()
-print(
-    f"{atlanta.nome} - {atlanta.ano} - S-{atlanta.temporadas}: {atlanta.likes}"
-)
-
 
 filmes_e_series = [vingadores, atlanta]
-#print(filmes_e_series)
 
 for programa in filmes_e_series: #Polimorfismo
-    detalhes = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
-    print(f"{programa.nome} - {detalhes} - {programa.ano} - {programa.likes}")
+    programa.imprime()
