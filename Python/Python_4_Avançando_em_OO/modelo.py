@@ -63,10 +63,15 @@ class Playlist():
     def listagem(self):
         return self._programas
     
-    @property
-    def tamanho(self):
+    def __len__(self):
+        """
+        Returns the number of programs in the playlist.
+        This method is used to determine the length of the playlist, 
+        allowing the Playlist object to be compatible with Python's 
+        built-in len() function.
+        """
         return len(self._programas)
-
+    
 
 vingadores = Filme("vingadores - guerra infinita", 2018, 160)
 atlanta = Serie("atlanta", 2018, 2)
@@ -85,7 +90,7 @@ atlanta.dar_like()
 filmes_e_series = [vingadores, atlanta, demolidor, tmep]
 playlist_fim_de_semana = Playlist("fim de semana", filmes_e_series)
 
-print(f'Tamanho da playlist: {playlist_fim_de_semana.tamanho}')
+print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
 
 for programa in playlist_fim_de_semana: 
     # Polymorphism: The same interface (e.g., iteration or printing) works for different types (Filme, Serie) seamlessly.
@@ -101,3 +106,5 @@ Desvantagem de fazer herança
 
 # Reuse vs. Interface: Reuse focuses on using existing methods and behaviors from a base class.
 # Interface focuses on providing a common behavior, even if implemented differently in subclasses.
+
+#Python Data Model: https://docs.python.org/3/reference/datamodel.html
