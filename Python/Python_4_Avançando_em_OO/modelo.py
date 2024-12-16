@@ -20,8 +20,8 @@ class ProgramaDeTV:
     def dar_like(self):
         self._likes += 1
 
-    def imprime(self):
-        print(f"{self._nome} - {self.ano} - {self._likes} Likes") 
+    def __str__(self): # Dunder or magic methods
+        return f"{self._nome} - {self.ano} - {self._likes} Likes" 
 
 
 # Subclass (child class) for movies, inheriting from ProgramaDeTV
@@ -32,8 +32,8 @@ class Filme(ProgramaDeTV):
         super().__init__(nome, ano)
         self.duracao = duracao
 
-    def imprime(self):
-        print(f"{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes")
+    def __str__(self):
+        return f"{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes"
 
 
 # Subclass (child class) for series, inheriting from ProgramaDeTV
@@ -44,8 +44,8 @@ class Serie(ProgramaDeTV):
         # Adds an additional attribute specific to series
         self.temporadas = temporadas  # Extends functionality with a new attribute
 
-    def imprime(self):
-        print(f"{self._nome} - {self.ano} - {self.temporadas} seasons - {self._likes} Likes") 
+    def __str__(self):
+        return f"{self._nome} - {self.ano} - {self.temporadas} seasons - {self._likes} Likes" 
 
 
 vingadores = Filme("vingadores - guerra infinita", 2018, 160)
@@ -59,4 +59,4 @@ atlanta.dar_like()
 filmes_e_series = [vingadores, atlanta]
 
 for programa in filmes_e_series: #Polimorfismo
-    programa.imprime()
+    print(programa) #Calls __str__
