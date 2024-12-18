@@ -19,11 +19,8 @@ while (chute != numeroSecreto) {
         tentativas++; //tentativas = tentativas + 1; ++ para incrementar um
     }
 }
-if (tentativas == 1) {
-    alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} tentativa`);
-} else {
-    alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} tentativas`); //Mensagem exibida no console; Template string pra concatenação
-}
+let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa' //Operador ternario
+alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} ${palavraTentativa}`); //Mensagem exibida no console; Template string pra concatenação
 //camelCase
 //snake_case
 //PascalCase
