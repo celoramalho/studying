@@ -8,7 +8,8 @@ let tentativas = 1;
 while (chute != numeroSecreto) {
     chute = prompt('Escolha um número entre 1 e 30');
     if (chute == numeroSecreto) {
-        alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} tentativas`); //Mensagem exibida no console; Template string pra concatenação
+        break;
+        
     } else {
         if (chute > numeroSecreto) {
             alert(`O número secreto é menor que ${chute}`);
@@ -17,6 +18,11 @@ while (chute != numeroSecreto) {
         }
         tentativas++; //tentativas = tentativas + 1; ++ para incrementar um
     }
+}
+if (tentativas == 1) {
+    alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} tentativa`);
+} else {
+    alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} tentativas`); //Mensagem exibida no console; Template string pra concatenação
 }
 //camelCase
 //snake_case
