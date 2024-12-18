@@ -1,12 +1,12 @@
 alert('Boas vindas ao jogo do número secreto');
-let numeroSecreto = 13;//In JavaScript we use camelCase
+let numeroSecreto = parseInt(Math.random() * 10); //pseudo-aleatorio
 console.log('O numero secreto é ' + numeroSecreto); // Linter puts automatically ;
 let chute
 let tentativas = 1;
-
+//In JavaScript we use camelCase
 //enquanto o chute for diferente do numero secreto
 while (chute != numeroSecreto) {
-    chute = prompt('Escolha um número entre 1 e 30');
+    chute = prompt('Escolha um número entre 1 e 10');
     if (chute == numeroSecreto) {
         break;
         
