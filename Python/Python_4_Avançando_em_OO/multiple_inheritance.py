@@ -67,9 +67,12 @@ class Manager(Employee):
         # Encapsulation: Access to private attribute
         return self.__team_size
 
+class TechGuy:
+    def __str__(self):
+        return f'Tech Guy, {self._name}'
 
 # Multiple Inheritance: TechLead inherits from Programmer and Manager
-class TechLead(Programmer, Manager):
+class TechLead(Programmer, Manager, TechGuy):
     """
     TechLead inherits from Programmer and Manager.
     The 'Good Head' concept ensures that methods in Programmer are prioritized over Manager.
@@ -80,7 +83,6 @@ class TechLead(Programmer, Manager):
 
     pass
 
-
 # Creating an instance of TechLead
 john_doe = TechLead('John Doe', 15000)
 
@@ -89,7 +91,9 @@ john_doe.role()  # Output: John Doe is writing code  (Programmer's role method t
 john_doe.show_language()  # Output: John Doe writes code in Python
 john_doe.management_philosophy()  # Output: John Doe focuses on people, transparency, and honesty
 print(f'{john_doe.name} manages a team of {john_doe.team_size} people')
+print(TechLead.__mro__) # Show the Method Resolution Order
 
+print(john_doe) # Call a TechGuy method
 """
 Explanation of Key Concepts (within the code):
 
@@ -118,4 +122,11 @@ Explanation of Key Concepts (within the code):
 5. **Overriding**:
    - Both Programmer and Manager override the `role()` method from Employee.
 
+6. **Mixing**:
+    - A Mixin is a class that provides specific functionality to other classes through inheritance, but it is not meant to stand alone. Mixins are used to "mix in" additional behavior into existing classes without deeply modifying their hierarchy.
+    Mixins follow a composition-like design and allow code reusability while maintaining flexibility.
 """
+
+#Herança múltipla
+#Resolução da ordem de chamada de métodos
+#Mixins
