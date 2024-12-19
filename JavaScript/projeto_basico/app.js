@@ -27,3 +27,5 @@ alert(`Parabens, vocé acertou o número secreto ${chute} com ${tentativas} ${pa
 //PascalCase
 // https://www.w3schools.com/js/default.asp
 //Operadores de comparação > < >= <= == !=
+
+
