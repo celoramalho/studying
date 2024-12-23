@@ -25,13 +25,14 @@ function verificarChute() {
         exibirTextoNaTela('h1', 'Parabéns!');
         exibirTextoNaTela('p', mensagemTentativa);
     } else {
-        tentativas++;
         exibirTextoNaTela('h1', 'Que pena, vocé errou!');
         if (chute > numeroSecreto){
             exibirTextoNaTela('p', 'O número secreto é menor');
         } else {
             exibirTextoNaTela('p', 'O número secreto é maior');
         }
+        tentativas++;
+        limparCampo();
     }
 }
 
@@ -39,6 +40,10 @@ function gerarNumeroAleatorio() {
     return parseInt(Math.random() * 10 + 1);
 }
 
+function limparCampo() {
+    let chute = document.querySelector('input');
+    chute.value = '';
+}
 
 //HTML Linguagem de marcação para estruturar conteúdo. Ex: <h1>Titulo</h1>
 //CSS Linguagem de estilos para apresentação e estilização. Ex: p {color: red;} div{background-color: blue;}
