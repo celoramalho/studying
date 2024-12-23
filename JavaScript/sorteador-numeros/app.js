@@ -3,10 +3,8 @@ function sortear() {
     let doNumero = parseInt(document.getElementById('de').value)
     let ateNumero = parseInt(document.getElementById('ate').value)
 
-    if (validaInputs(quantidade, doNumero, ateNumero)){
-        pass
-    }else{
-        return
+    if (!validaInputs(quantidade, doNumero, ateNumero)){
+        return;
     }
 
     console.log(`Quantidade: ${quantidade}`);
