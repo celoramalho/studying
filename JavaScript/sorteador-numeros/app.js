@@ -12,7 +12,7 @@ function sortear() {
     console.log(`Até o número: ${ateNumero}`);
 
     let numerosSorteados = [];
-    while (numerosSorteados.length < quantidade) {
+    while(numerosSorteados.length < quantidade) {
         numeroSorteado = obterNumerosSorteados(doNumero, ateNumero);
         if (numerosSorteados.includes(numeroSorteado)) {
             continue;
@@ -21,7 +21,7 @@ function sortear() {
             numerosSorteados.push(numeroSorteado);
         }
     }
-    exibirNaTela('#resultado', numerosSorteados);
+    exibirNaTela('resultado', numerosSorteados);
     document.getElementById('btn-reiniciar').removeAttribute('disabled');
 }
 
@@ -38,17 +38,17 @@ function validaInputs(quantidade, doNumero, ateNumero) {
 }
 
 function obterNumerosSorteados(min, max) {
-    let numeroSorteado = parseInt(Math.random() * (max - min) + min);   
+    let numeroSorteado = Math.floor(Math.random() * (max - min + 1) + min);   
     return numeroSorteado;
 }
 
 function exibirNaTela(id, texto) {
-    let campo = document.querySelector(id);
-    campo.innerHTML = texto;
+    let campo = document.getElementById(id);
+    campo.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${texto}</label>`;
 }
 
 function reiniciar() {
-    exibirNaTela('#resultado', 'Números sorteados:  nenhum até agora');
+    exibirNaTela('resultado', 'Números sorteados:  nenhum até agora');
     document.getElementById('btn-reiniciar').setAttribute('disabled', true);
     document.getElementById('btn-sortear').removeAttribute('disabled');
 }
