@@ -1,7 +1,7 @@
 function sortear() {
-    let quantidade = document.getElementById('quantidade').value
-    let doNumero = document.getElementById('de').value
-    let ateNumero = document.getElementById('ate').value
+    let quantidade = parseInt(document.getElementById('quantidade').value)
+    let doNumero = parseInt(document.getElementById('de').value)
+    let ateNumero = parseInt(document.getElementById('ate').value)
 
     console.log(`Quantidade: ${quantidade}`);
     console.log(`Do número: ${doNumero}`);
