@@ -22,7 +22,7 @@ function sortear() {
         }
     }
     exibirNaTela('resultado', numerosSorteados);
-    document.getElementById('btn-reiniciar').removeAttribute('disabled');
+    alterarStatusBotaoReiniciar();
 }
 
 function validaInputs(quantidade, doNumero, ateNumero) {
@@ -49,6 +49,22 @@ function exibirNaTela(id, texto) {
 
 function reiniciar() {
     exibirNaTela('resultado', 'Números sorteados:  nenhum até agora');
-    document.getElementById('btn-reiniciar').setAttribute('disabled', true);
-    document.getElementById('btn-sortear').removeAttribute('disabled');
+    limparCampos();
+    alterarStatusBotaoReiniciar();
+}
+
+function limparCampos() {    
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
+}
+
+function alterarStatusBotaoReiniciar() {
+    let botao = document.getElementById('btn-reiniciar');
+    if (botao.classList.contains('container__botao-desabilitado')){
+        botao.classList.remove('container__botao-desabilitado');
+        botao.classList.add('container__botao');
+    }else{  
+        botao.setAttribute('disabled', true);
+    }
 }
