@@ -11,8 +11,11 @@ function exibirTextoNaTela(tag, texto) {
     campo.innerHTML = texto;
 }
 
-exibirTextoNaTela('h1', 'Jogo do número secreto');
-exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
+function exibirMensagemInicial(){
+    exibirTextoNaTela('h1', 'Jogo do número secreto');
+    exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
+}
+exibirMensagemInicial();
 
 function verificarChute() {
     let chute = document.querySelector('input').value;
@@ -26,7 +29,7 @@ function verificarChute() {
         exibirTextoNaTela('p', mensagemTentativa);
         limparCampo();
         document.getElementById('reiniciar').removeAttribute('disabled');
-        
+
     } else {
         exibirTextoNaTela('h1', 'Que pena, vocé errou!');
         if (chute > numeroSecreto){
@@ -48,6 +51,13 @@ function limparCampo() {
     chute.value = '';
 }
 
+function reiniciarJogo() {
+    numeroSecreto = gerarNumeroAleatorio();
+    limparCampo();
+    tentativas = 1;
+    exibirMensagemInicial();
+    document.getElementById('reiniciar').setAttribute('disabled', true);
+}
 //HTML Linguagem de marcação para estruturar conteúdo. Ex: <h1>Titulo</h1>
 //CSS Linguagem de estilos para apresentação e estilização. Ex: p {color: red;} div{background-color: blue;}
 //JavaScript(JS) Linguagem de porgramação para interatividade. Ex: function iniciarJogo(){...}
