@@ -1,5 +1,6 @@
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
+let listaDeNumerosSorteados = [];
 //let titulo = document.querySelector('h1');
 //titulo.innerHTML = 'Jogo do número secreto';
 
@@ -43,7 +44,13 @@ function verificarChute() {
 }
 
 function gerarNumeroAleatorio() {
-    return parseInt(Math.random() * 10 + 1);
+    let NumeroEscolhido = parseInt(Math.random() * 10 + 1);
+    if (listaDeNumerosSorteados.includes(NumeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    } else {
+        listaDeNumerosSorteados.push(NumeroEscolhido);
+        return NumeroEscolhido;
+    }
 }
 
 function limparCampo() {
