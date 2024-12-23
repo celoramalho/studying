@@ -11,31 +11,16 @@ from selenium.webdriver.common.keys import Keys
 #import app
 #from plugins.selenium.selenium import Selenium
 
-
-# In[51]:
-
-
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service 
-
-
-# In[52]:
 
 
 # Inicializa o driver do navegador (Chrome no exemplo)
 #driver = webdriver.Chrome(executable_path='/caminho/para/chromedriver')
 driver_path = ChromeDriverManager().install()
 
-
-# In[53]:
-
-
 print(driver_path)
-
-
-# In[59]:
-
 
 #driver = webdriver.Chrome(ChromeDriverManager().install()) erro
 #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -44,29 +29,13 @@ print(driver_path)
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
-
-# In[62]:
-
-
 driver.get('https://www.fitenergia.com.br/')
-
-
-# In[ ]:
-
 
 driver.find_element(By.XPATH, '/html/body/header/section/div[2]/div[2]/div/div/a').click()
 
-
-# In[ ]:
-
-
 driver.find_element(By.XPATH, '//*[@id="user_email"]').send_keys('teste@teste.com'+ Keys.ENTER)
-
-
-# In[ ]:
 
 
 driver.find_element(By.XPATH, '//*[@id="user_password"]').send_keys('Password123'+ Keys.ENTER)
 
 time.sleep(30)
-
