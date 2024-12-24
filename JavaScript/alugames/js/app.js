@@ -1,7 +1,7 @@
 function alterarStatus(id) {
-    let dashboard_item = document.getElementById(`game-${id}`);
-    let img = dashboard_item.querySelector('.dashboard__item__img');
-    let link_alugar = dashboard_item.querySelector('.dashboard__item__button');
+    let game = document.getElementById(`game-${id}`);
+    let img = game.querySelector('.dashboard__item__img');
+    let link_alugar = game.querySelector('.dashboard__item__button');
 
     if (link_alugar.classList.contains('dashboard__item__button--return')){
         img.classList.remove('dashboard__item__img--rented');
