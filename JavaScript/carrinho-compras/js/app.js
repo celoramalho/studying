@@ -1,4 +1,4 @@
-resetQuantidade();
+limpar();
 
 function resetQuantidade(){
     let inputQuantidade = document.getElementById('quantidade');
@@ -33,11 +33,11 @@ function adicionarProdutoAoCarrinho(produto, quantidade) {
             </section>
             `;
         }
-        somarValorTotal(valorUnitario, quantidade);
+        atualizarValorTotal(valorUnitario, quantidade);
     }
 }
 
-function somarValorTotal(valorUnitario, quantidade) {
+function atualizarValorTotal(valorUnitario, quantidade) {
     let valorTotal = document.getElementById('valor-total')
     let valorAtual = valorTotal.textContent.split('$')[1];
     let valorProduto = valorUnitario.split('$')[1];
@@ -45,7 +45,7 @@ function somarValorTotal(valorUnitario, quantidade) {
     let novoValor = parseInt(valorAtual) + parseInt(valorProduto)*parseInt(quantidade);
     console.log(valorAtual);
     console.log(novoValor);
-    valorTotal.textContent = `R$${novoValor}`;
+    valorTotal.textContent = `R$ ${novoValor}`;
 }
 
 function adicionar() {
