@@ -57,6 +57,7 @@ function adicionar() {
 
     adicionarProdutoAoCarrinho(produto, quantidade);
 }
+
 function limpar() {
     let listaProduto = document.getElementById('lista-produtos');
     let valorTotal = document.getElementById('valor-total');
