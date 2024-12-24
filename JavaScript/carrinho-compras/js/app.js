@@ -11,30 +11,26 @@ function adicionarProdutoAoCarrinho(produto, quantidade) {
     let nomeProduto = produto.split('-')[0];
     let produtosAdicionados = document.querySelectorAll('.carrinho__produtos__produto');
     
-    if (quantidade <= 0){
-        alert('Quantidade deve ser maior que zero para adicionar ao carrinho');
-        return;
-    }else{
-        if (listaProduto.innerHTML.includes(nomeProduto)){
-            for (let i = 0; i < produtosAdicionados.length; i++) {
-                if (produtosAdicionados[i].innerHTML.includes(nomeProduto)) {
-                    let campoQuantidade = produtosAdicionados[i].getElementsByTagName('span')[0];
-                    let quantidadeAtual = campoQuantidade.textContent.split('x')[0];
-                    let quantidadeNova = parseInt(quantidade) + parseInt(quantidadeAtual);
-                    console.log(`quantidadeAtual: ${quantidadeAtual},quantidadeNova: ${quantidadeNova}`);
-                    campoQuantidade.textContent = `${quantidadeNova}x`;
-                }
+
+    if (listaProduto.innerHTML.includes(nomeProduto)){
+        for (let i = 0; i < produtosAdicionados.length; i++) {
+            if (produtosAdicionados[i].innerHTML.includes(nomeProduto)) {
+                let campoQuantidade = produtosAdicionados[i].getElementsByTagName('span')[0];
+                let quantidadeAtual = campoQuantidade.textContent.split('x')[0];
+                let quantidadeNova = parseInt(quantidade) + parseInt(quantidadeAtual);
+                console.log(`quantidadeAtual: ${quantidadeAtual},quantidadeNova: ${quantidadeNova}`);
+                campoQuantidade.textContent = `${quantidadeNova}x`;
             }
         }
-        else{
-            listaProduto.innerHTML += `
-            <section class="carrinho__produtos__produto">
-            <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul"> ${valorUnitario}</span>
-            </section>
-            `;
-        }
-        atualizarValorTotal(valorUnitario, quantidade);
     }
+    else{
+        listaProduto.innerHTML += `
+        <section class="carrinho__produtos__produto">
+        <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul"> ${valorUnitario}</span>
+        </section>
+        `;
+    }
+    atualizarValorTotal(valorUnitario, quantidade);
 }
 
 function atualizarValorTotal(valorUnitario, quantidade) {
@@ -54,8 +50,16 @@ function adicionar() {
 
     console.log(`Produto: ${produto}`);
     console.log(`Quantidade: ${quantidade}`);
-
-    adicionarProdutoAoCarrinho(produto, quantidade);
+    if (quantidade <= 0 || quantidade >= 1000) {
+        alert('Quantidade deve ser maior que 0 e menor que 1000');
+        return;
+    }else if(isNaN(quantidade) ||quantidade == null){
+        alert('Quantidade informada não é um número');
+        return;
+    }else{
+        adicionarProdutoAoCarrinho(produto, quantidade); 
+    }
+        
 }
 
 function limpar() {
