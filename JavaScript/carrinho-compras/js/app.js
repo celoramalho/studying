@@ -7,7 +7,7 @@ function resetQuantidade(){
 
 function adicionarProdutoAoCarrinho(produto, quantidade) {
     let listaProduto = document.getElementById('lista-produtos');
-    let valor = produto.split(' - ')[1];
+    let valorUnitario = produto.split(' - ')[1];
     let nomeProduto = produto.split('-')[0];
     let produtosAdicionados = document.querySelectorAll('.carrinho__produtos__produto');
     
@@ -29,18 +29,18 @@ function adicionarProdutoAoCarrinho(produto, quantidade) {
         else{
             listaProduto.innerHTML += `
             <section class="carrinho__produtos__produto">
-            <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul"> ${valor}</span>
+            <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul"> ${valorUnitario}</span>
             </section>
             `;
         }
-        somarValorTotal(valor, quantidade);
+        somarValorTotal(valorUnitario, quantidade);
     }
 }
 
-function somarValorTotal(valor, quantidade) {
+function somarValorTotal(valorUnitario, quantidade) {
     let valorTotal = document.getElementById('valor-total')
     let valorAtual = valorTotal.textContent.split('$')[1];
-    let valorProduto = valor.split('$')[1];
+    let valorProduto = valorUnitario.split('$')[1];
 
     let novoValor = parseInt(valorAtual) + parseInt(valorProduto)*parseInt(quantidade);
     console.log(valorAtual);
@@ -65,3 +65,4 @@ function limpar() {
     valorTotal.textContent = 'R$0';
     resetQuantidade();
 }
+//(?<![\w-])valorUnitario(?![\w-])
