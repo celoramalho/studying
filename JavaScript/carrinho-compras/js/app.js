@@ -1,14 +1,8 @@
+resetQuantidade();
 
-let inputQuantidade = document.getElementById('quantidade');
-inputQuantidade.value = 1;
-function adicionar() {
-    let produto = document.getElementById('produto').value;
-    let quantidade = document.getElementById('quantidade').value;
-
-    console.log(`Produto: ${produto}`);
-    console.log(`Quantidade: ${quantidade}`);
-
-    adicionarProdutoAoCarrinho(produto, quantidade);
+function resetQuantidade(){
+    let inputQuantidade = document.getElementById('quantidade');
+    inputQuantidade.value = 1;
 }
 
 function adicionarProdutoAoCarrinho(produto, quantidade) {
@@ -27,16 +21,6 @@ function adicionarProdutoAoCarrinho(produto, quantidade) {
         `;
         somarValorTotal(valor, quantidade);
     }
-
-    
-}
-
-function limpar() {
-    let listaProduto = document.getElementById('lista-produtos');
-    listaProduto.innerHTML = '';
-
-    let valorTotal = document.getElementById('valor-total');
-    valorTotal.textContent = 'R$0';
 }
 
 function somarValorTotal(valor, quantidade) {
@@ -48,4 +32,22 @@ function somarValorTotal(valor, quantidade) {
     console.log(valorAtual);
     console.log(novoValor);
     valorTotal.textContent = `R$${novoValor}`;
+}
+
+function adicionar() {
+    let produto = document.getElementById('produto').value;
+    let quantidade = document.getElementById('quantidade').value;
+
+    console.log(`Produto: ${produto}`);
+    console.log(`Quantidade: ${quantidade}`);
+
+    adicionarProdutoAoCarrinho(produto, quantidade);
+}
+function limpar() {
+    let listaProduto = document.getElementById('lista-produtos');
+    let valorTotal = document.getElementById('valor-total');
+
+    listaProduto.innerHTML = '';
+    valorTotal.textContent = 'R$0';
+    resetQuantidade();
 }
