@@ -7,18 +7,32 @@ function resetQuantidade(){
 
 function adicionarProdutoAoCarrinho(produto, quantidade) {
     let listaProduto = document.getElementById('lista-produtos');
-    let valor = produto.split('-')[1];
+    let valor = produto.split(' - ')[1];
     let nomeProduto = produto.split('-')[0];
+    let produtosAdicionados = document.querySelectorAll('.carrinho__produtos__produto');
     
     if (quantidade <= 0){
         alert('Quantidade deve ser maior que zero para adicionar ao carrinho');
         return;
     }else{
-        listaProduto.innerHTML += `
-        <section class="carrinho__produtos__produto">
-          <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul"> ${valor}</span>
-        </section>
-        `;
+        if (listaProduto.innerHTML.includes(nomeProduto)){
+            for (let i = 0; i < produtosAdicionados.length; i++) {
+                if (produtosAdicionados[i].innerHTML.includes(nomeProduto)) {
+                    let campoQuantidade = produtosAdicionados[i].getElementsByTagName('span')[0];
+                    let quantidadeAtual = campoQuantidade.textContent.split('x')[0];
+                    let quantidadeNova = parseInt(quantidade) + parseInt(quantidadeAtual);
+                    console.log(`quantidadeAtual: ${quantidadeAtual},quantidadeNova: ${quantidadeNova}`);
+                    campoQuantidade.textContent = `${quantidadeNova}x`;
+                }
+            }
+        }
+        else{
+            listaProduto.innerHTML += `
+            <section class="carrinho__produtos__produto">
+            <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul"> ${valor}</span>
+            </section>
+            `;
+        }
         somarValorTotal(valor, quantidade);
     }
 }
