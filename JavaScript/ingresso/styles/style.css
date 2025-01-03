@@ -103,6 +103,12 @@ form button {
     cursor: pointer;
 }
 
+.botao-desabilitado {
+    color: rgb(167, 167, 167);
+    background-color: #414141;
+    box-shadow: none;
+}
+
 .hachuras {
     margin: 5.19rem 0;
 }
