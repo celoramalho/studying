@@ -2,17 +2,21 @@ class Restaurante:
     nome = '' 
     categoria = '' 
     ativo = False
+    def __init__(self, nome, categoria): # Construtor
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+        
+        
     
-restaurante_subuai = Restaurante()
-restaurante_subuai.nome = 'Subuai'
-restaurante_subuai.categoria = 'Fast Food'
+restaurante_subuai = Restaurante('Subuai', 'Fast Food')
+restaurante_osteria = Restaurante('74 Osteria', 'Osteria')
+
 restaurante_subuai.ativo = True
 
-restaurante_pizza = Restaurante()
+restaurantes = [restaurante_subuai, restaurante_osteria]
 
-restaurantes = [restaurante_subuai, restaurante_pizza]
-
-print(restaurante_subuai.ativo)
+print(restaurante_subuai.nome)
 
 
 
