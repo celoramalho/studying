@@ -2,15 +2,15 @@ class Restaurante:
     restaurantes = [] # atributo de classe
     def __init__(self, nome, categoria): # Construtor
         #Atributos de instância
-        self.nome = nome
-        self.categoria = categoria
+        self._nome = nome.title() #.upper()
+        self._categoria = categoria.title()
         self._ativo = False
         Restaurante.restaurantes.append(self)
         
     
     
     def __str__(self):
-        return f'{self.nome.ljust(20)} | {self.categoria.ljust(20)} | {self.ativo.ljust(20)}'
+        return f'{self._nome.ljust(20)} | {self._categoria.ljust(20)} | {self.ativo.ljust(20)}'
     
     def listar_restaurantes():
         print('NOME'.ljust(20) + ' | ' + 'CATEGORIA'.ljust(20) + ' | ' + 'STATUS')
@@ -22,8 +22,9 @@ class Restaurante:
         return '☑ ativado' if self._ativo else '☒ desativado' #https://coolsymbol.com/
         
     
-restaurante_subuai = Restaurante('Subuai', 'Fast Food')
+restaurante_subuai = Restaurante('subuai', 'fast food')
 restaurante_osteria = Restaurante('74 Osteria', 'Osteria')
+
 
 print(Restaurante.listar_restaurantes())
 
