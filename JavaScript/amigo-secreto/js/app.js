@@ -1,88 +1,68 @@
-let amigos = []
-function adicionar(){
-    let novoAmigo = document.querySelector('#nome-amigo');
-    if (novoAmigo.value == '') {
+let amigos = [];
+
+function adicionar() {
+    const inputAmigo = document.querySelector('#nome-amigo');
+    const novoAmigo = inputAmigo.value.trim();
+    const novoAmigoLowerCase = novoAmigo.toLowerCase();
+
+    if (!novoAmigo) {
         alert('Nome inválido');
         return;
-    }else if (amigos.includes(novoAmigo.value)){
-        alert(`${novoAmigo.value} ja foi adicionado`);
+    }
+
+    if (amigos.some(amigo => amigo.toLowerCase() === novoAmigoLowerCase)) {
+        alert(`${novoAmigo} já foi adicionado`);
         return;
-    }else{
-        amigos.push(novoAmigo.value);
-        console.log(amigos);
-        atualizarListaAmigosAdicionados();
     }
-    novoAmigo.value = '';
+
+    amigos.push(novoAmigo);
+    console.log(amigos);
+    atualizarListaAmigos();
+    limparInput(inputAmigo);
 }
 
-function atualizarListaAmigosAdicionados(){
-    let listaAmigos = document.querySelector('.friends__container')
-    let separador = ',&nbsp';
-    listaAmigos.innerHTML = '';
-
-    for (let i = 0; i < amigos.length; i++) {
-        if (i == amigos.length - 1) {
-            separador = '';
-        }
-        console.log(amigos[i]);
-        listaAmigos.innerHTML += `<p id="lista-amigos">${amigos[i]}${separador}</p>`;
-    }
+function atualizarListaAmigos() {
+    const listaAmigos = document.querySelector('.friends__container');
+    listaAmigos.innerHTML = amigos
+        .map((amigo, index) => `<p id="lista-amigos">${amigo}${index < amigos.length - 1 ? ',&nbsp' : ''}</p>`)
+        .join('');
 }
 
-
-function sortear(){
-    let listaSorteados = document.querySelector('.prizeDraw__container')
+function sortear() {
+    const listaSorteados = document.querySelector('.prizeDraw__container');
     listaSorteados.innerHTML = '';
+
     if (amigos.length < 4) {
-        alert('Quantidade de amigos deve ser maior que 3');
+        alert('A quantidade de amigos deve ser maior que 3');
         return;
-    }else{
-        let amigosSecretos = [];
-        
-        for (let i = amigos.length; i > 0; i--) {
-            
-            const indexRandom = parseInt(Math.random() * i);
-
-            [amigos[i - 1], amigos[indexRandom]] = [amigos[indexRandom], amigos[i-1]];
-            
-        }
-        console.log(amigos);
-
-        for (let i = 0; i < amigos.length; i++) {
-            if (i == amigos.length - 1) {
-                amigosSecretos.push(amigos[i], amigos[0]);
-                console.log(`${amigos[i]} -> ${amigos[0]}`);
-                listaSorteados.innerHTML  += `<p id="lista-sorteio">${amigos[i]} --> ${amigos[0]}</p>`
-            }else{
-                amigosSecretos.push(amigos[i], amigos[i + 1]);
-                console.log(`${amigos[i]} -> ${amigos[i + 1]}`);
-                listaSorteados.innerHTML  += `<p id="lista-sorteio">${amigos[i]} --> ${amigos[i + 1]}</p>`
-            }   
-        }
     }
+
+    embaralharAmigos();
+
+    const amigosSecretos = [];
+    amigos.forEach((amigo, index) => {
+        const proximoAmigo = amigos[(index + 1) % amigos.length];
+        amigosSecretos.push([amigo, proximoAmigo]);
+        listaSorteados.innerHTML += `<p id="lista-sorteio">${amigo} --> ${proximoAmigo}</p>`;
+        console.log(`${amigo} -> ${proximoAmigo}`);
+    });
 }
 
-function reiniciar(){
+function reiniciar() {
     amigos = [];
-    atualizarListaAmigosAdicionados();
-    let listaSorteados = document.querySelector('.prizeDraw__container')
+    atualizarListaAmigos();
+    const listaSorteados = document.querySelector('.prizeDraw__container');
     listaSorteados.innerHTML = '';
 }
 
+function embaralharAmigos() {
+    for (let i = amigos.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [amigos[i], amigos[j]] = [amigos[j], amigos[i]];
+    }
+    console.log('Amigos embaralhados:', amigos);
+}
 
-
-//        while (amigosSecretos.length < amigos.length) {
-//            amigo1 = amigos[parseInt(Math.random() * amigos.length)];
-//            amigo2 = amigos[parseInt(Math.random() * amigos.length)];
-//
-//            if (amigosSecretos.includes(amigo1) || amigosSecretos.includes(amigo2) || amigo1 == amigo2) {
-//                continue;
-//            }else{
-//                amigosSecretos.push(amigo1, amigo2);
-//                console.log(`${amigo1} -> ${amigo2}`);
-//                listaSorteados.innerHTML  += `<p id="lista-sorteio">${amigo1} --> ${amigo2}</p>`
-//            }
-//        }
-//    }
-//}
-
+function limparInput(input) {
+    input.value = '';
+}
