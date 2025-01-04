@@ -17,29 +17,37 @@ def exibir_menu_de_opcoes():
     print('3. Ativar restaurantes')
     print('4. Sair\n')
 
-def escolher_opcao():
-    opcao_escolhida = int(input('Escolha uma opção: '))
-    #pcao_escolhida = int(opcao_escolhida)
-    print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
-    #print(type(opcao_escolhida))
-    if opcao_escolhida == 1:
-        print('Cadastrar restaurante')
-    elif opcao_escolhida == 2:
-        print('Listar restaurantes')
-    elif opcao_escolhida == 3:
-        print('Ativar restaurantes')
-    elif opcao_escolhida == 4:
-        finalizar_app()
-    else:
-        print('Opção inválida')
-
-
 def finalizar_app():
     #os.system('cls') windows
     os.system('clear') #mac e linux
     print('Encerrando programa...\n')
     
+def opcao_invalida():
+    print('Opção inválida\n')
+    input('Digite uma tecla para voltar ao menu principal')
+    main()
+
+def escolher_opcao():
+    try:
+        opcao_escolhida = int(input('Escolha uma opção: '))
+        #pcao_escolhida = int(opcao_escolhida)
+        print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
+        #print(type(opcao_escolhida))
+        if opcao_escolhida == 1:
+            print('Cadastrar restaurante')
+        elif opcao_escolhida == 2:
+            print('Listar restaurantes')
+        elif opcao_escolhida == 3:
+            print('Ativar restaurantes')
+        elif opcao_escolhida == 4:
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida()
+        
 def main():
+    os.system('clear')
     exibir_nome_do_app()
     exibir_menu_de_opcoes()
     escolher_opcao()
