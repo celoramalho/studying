@@ -1,3 +1,5 @@
+import os
+
 print("""
       
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
@@ -18,6 +20,14 @@ opcao_escolhida = int(input('Escolha uma opção: '))
 print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
 #print(type(opcao_escolhida))
 
+
+def finalizar_app():
+    os.system('cls')
+    #os.system('clear') mac
+    print('Encerrando programa\n')
+    
+    
+
 if opcao_escolhida == 1:
     print('Cadastrar restaurante')
 elif opcao_escolhida == 2:
@@ -25,9 +35,11 @@ elif opcao_escolhida == 2:
 elif opcao_escolhida == 3:
     print('Ativar restaurantes')
 elif opcao_escolhida == 4:
-    print('Encerrando programa')
+    finalizar_app()
 else:
     print('Opção inválida')
+    
+
 '''
 aspas simples tripla
 '''
