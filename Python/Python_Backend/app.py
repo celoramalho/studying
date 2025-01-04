@@ -1,6 +1,6 @@
 import os
 
-restaurantes = []
+restaurantes = ['Subuai', 'Burger Ting', 'Niniuta', '74 Osteria']
 
 
 def exibir_nome_do_app():
@@ -24,6 +24,14 @@ def cadastrar_novo_restaurante():
     restaurantes.append(nome_do_restaurante)
     print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
     input('Digite uma tecla para voltar ao menu principal')
+    main()
+
+def listar_restaurantes():
+    os.system('clear')
+    print('Listando restaurantes\n')
+    for restaurante in restaurantes:
+        print(f'.{restaurante}')
+    input('\nDigite uma tecla para voltar ao menu principal')
     main()
 
 def exibir_menu_de_opcoes():
@@ -51,7 +59,7 @@ def escolher_opcao():
         if opcao_escolhida == 1:
             cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
-            print('Listar restaurantes')
+            listar_restaurantes()
         elif opcao_escolhida == 3:
             print('Ativar restaurantes')
         elif opcao_escolhida == 4:
@@ -167,3 +175,33 @@ Namespaces são uma grande ideia — vamos fazer mais dessas!\
 
 
 # __dunder__ methods
+
+
+"""
+# Criando uma lista de compras
+lista_de_compras = ["Maçã", "Banana", "Leite", "Pão", "Queijo"]
+
+# Adicionando um item à lista
+lista_de_compras.append("Ovos")
+
+# Removendo um item da lista
+lista_de_compras.remove("Banana")
+
+# Exibindo a lista
+print("Lista de Compras:")
+for item in lista_de_compras:
+    print("- " + item)
+
+"""
+
+
+"""
+# Definindo uma tupla de coordenadas geográficas
+coordenadas_gps = (40.7128, -74.0060)
+
+# Exibindo as coordenadas
+print("Coordenadas GPS:")
+print("Latitude:", coordenadas_gps[0])
+print("Longitude:", coordenadas_gps[1])
+
+"""
