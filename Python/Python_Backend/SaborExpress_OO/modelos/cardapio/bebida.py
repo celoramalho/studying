@@ -1,5 +1,4 @@
 class Bebida:
     def __init__(self, nome, preco, tamanho):
-        self._nome = nome
-        self._preco = preco
+        super().__init__(nome, preco)
         self._tamanho = tamanho
