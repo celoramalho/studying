@@ -1,6 +1,9 @@
 import os
 
-restaurantes = ['Subuai', 'Burger Ting', 'Niniuta', '74 Osteria']
+restaurantes = [{'nome': 'Subuai', 'categoria': 'Fast Food', 'ativo': True},
+                {'nome': 'Burger Ting', 'categoria': 'Fast Food', 'ativo': True},
+                {'nome': 'Niniuta', 'categoria': 'Culinária Brasileira', 'ativo': True},
+                {'nome': '74 Osteria', 'categoria': 'Osteria', 'ativo': True}]
 
 
 def exibir_nome_do_app():
@@ -16,23 +19,35 @@ def exibir_nome_do_app():
 
 
 
-
-def cadastrar_novo_restaurante():
-    os.system('clear')
-    print('Cadastro de novos restaurantes\n')
-    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
-    restaurantes.append(nome_do_restaurante)
-    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
-    input('Digite uma tecla para voltar ao menu principal')
+def voltar_ao_menu_principal():
+    input("\nDigite uma tecla para voltar ao menu principal ")
     main()
+    
+def exibir_subtitulo(texto):
+    os.system('clear')
+    print(f"\n{texto}")
+    #print('-'*len(texto))
+    
+def cadastrar_novo_restaurante():
+    exibir_subtitulo('Cadastro de novos restaurantes')
+    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    categoria = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
+    dados_do_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria, 'ativo': False}
+
+    restaurantes.append(dados_do_restaurante)
+    
+    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
+    voltar_ao_menu_principal()
 
 def listar_restaurantes():
-    os.system('clear')
-    print('Listando restaurantes\n')
+    exibir_subtitulo('Listando restaurantes')
     for restaurante in restaurantes:
-        print(f'.{restaurante}')
-    input('\nDigite uma tecla para voltar ao menu principal')
-    main()
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo = restaurante['ativo']
+        
+        print(f'.{nome_restaurante} - {categoria} - {ativo}')
+    voltar_ao_menu_principal()
 
 def exibir_menu_de_opcoes():
     print('1. Cadastrar restaurante')
@@ -42,13 +57,11 @@ def exibir_menu_de_opcoes():
 
 def finalizar_app():
     #os.system('cls') windows
-    os.system('clear') #mac e linux
-    print('Encerrando programa...\n')
-    
+    exibir_subtitulo('Finalizando programa...')
+  
 def opcao_invalida():
     print('Opção inválida\n')
-    input('Digite uma tecla para voltar ao menu principal')
-    main()
+    voltar_ao_menu_principal()
 
 def escolher_opcao():
     try:
@@ -78,6 +91,8 @@ def main():
 if __name__ == '__main__':
     main()
     
+
+#'aspas simples ignora espaços no inicio e fim?'
 
 '''
 aspas simples tripla
