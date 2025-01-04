@@ -48,15 +48,16 @@ function sortear(){
         }
         console.log(amigos);
 
-        for (let i = 0; i < amigos.length; i ++) {
+        for (let i = 0; i < amigos.length; i++) {
             if (i == amigos.length - 1) {
                 amigosSecretos.push(amigos[i], amigos[0]);
                 console.log(`${amigos[i]} -> ${amigos[0]}`);
                 listaSorteados.innerHTML  += `<p id="lista-sorteio">${amigos[i]} --> ${amigos[0]}</p>`
-            }
-            amigosSecretos.push(amigos[i], amigos[i + 1]);
-            console.log(`${amigos[i]} -> ${amigos[i + 1]}`);
-            listaSorteados.innerHTML  += `<p id="lista-sorteio">${amigos[i]} --> ${amigos[i + 1]}</p>`
+            }else{
+                amigosSecretos.push(amigos[i], amigos[i + 1]);
+                console.log(`${amigos[i]} -> ${amigos[i + 1]}`);
+                listaSorteados.innerHTML  += `<p id="lista-sorteio">${amigos[i]} --> ${amigos[i + 1]}</p>`
+            }   
         }
     }
 }
