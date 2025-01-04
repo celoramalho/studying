@@ -24,18 +24,6 @@ class Restaurante:
         
     def alterar_estado(self):
         self._ativo = not self._ativo
-    
-restaurante_subuai = Restaurante('subuai', 'fast food')
-restaurante_osteria = Restaurante('74 Osteria', 'Osteria')
-
-restaurante_subuai.alterar_estado()
-
-
-print(Restaurante.listar_restaurantes())
-
-
-
-
 
 
 # print(vars(restaurante_subuai))
