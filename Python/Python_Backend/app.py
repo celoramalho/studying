@@ -1,5 +1,8 @@
 import os
 
+restaurantes = []
+
+
 def exibir_nome_do_app():
     print("""
         
@@ -10,6 +13,18 @@ def exibir_nome_do_app():
     ██████╔╝██║░░██║██████╦╝╚█████╔╝██║░░██║  ███████╗██╔╝╚██╗██║░░░░░██║░░██║███████╗██████╔╝██████╔╝
     ╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░
         """) # https://fsymbols.com/
+
+
+
+
+def cadastrar_novo_restaurante():
+    os.system('clear')
+    print('Cadastro de novos restaurantes\n')
+    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    restaurantes.append(nome_do_restaurante)
+    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
+    input('Digite uma tecla para voltar ao menu principal')
+    main()
 
 def exibir_menu_de_opcoes():
     print('1. Cadastrar restaurante')
@@ -34,7 +49,7 @@ def escolher_opcao():
         print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
         #print(type(opcao_escolhida))
         if opcao_escolhida == 1:
-            print('Cadastrar restaurante')
+            cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
             print('Listar restaurantes')
         elif opcao_escolhida == 3:
@@ -52,8 +67,6 @@ def main():
     exibir_menu_de_opcoes()
     escolher_opcao()
 
-
-    
 if __name__ == '__main__':
     main()
     
