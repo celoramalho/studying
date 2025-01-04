@@ -1,10 +1,17 @@
 from modelos.restaurante import Restaurante
+from modelos.cardapio.bebida import Bebida
+from modelos.cardapio.prato import Prato
 
 def main():
     restaurante_subuai = Restaurante('subuai', 'fast food')
     restaurante_osteria = Restaurante('74 Osteria', 'Osteria')
     restaurante_burger_ting = Restaurante('Burger Ting', 'Fast Food')
     restaurante_niniuta = Restaurante('Niniuta', 'Gourmet')
+    
+    
+    
+    bebida_vinho_lagar = Bebida('Vinho Branco Lagar', 64.0, 'grande')
+    prato_risoto_limao_polvo = Prato('Risoto de limão com Polvo', 125, 'Risoto de limão siciliano com Polvo grelhado')
     
     
     restaurante_osteria.receber_avaliacao('Spiga', 5)
@@ -21,7 +28,7 @@ def main():
 
 
     print(Restaurante.listar_restaurantes())
-
+    print(bebida_vinho_lagar, prato_risoto_limao_polvo, sep='\n')
 
 if __name__ == '__main__':
     main()
