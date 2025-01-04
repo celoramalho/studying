@@ -1,18 +1,18 @@
 let amigos = []
 function adicionar(){
-    let novoAmigo= document.querySelector('#nome-amigo').value;
-    if (novoAmigo == '') {
+    let novoAmigo = document.querySelector('#nome-amigo');
+    if (novoAmigo.value == '') {
         alert('Nome inválido');
         return;
-    }else if (amigos.includes(novoAmigo)){
-        alert(`${novoAmigo} ja foi adicionado`);
+    }else if (amigos.includes(novoAmigo.value)){
+        alert(`${novoAmigo.value} ja foi adicionado`);
         return;
     }else{
-        amigos.push(novoAmigo);
+        amigos.push(novoAmigo.value);
         console.log(amigos);
-        novoAmigo = '';
         atualizarListaAmigosAdicionados();
     }
+    novoAmigo.value = '';
 }
 
 function atualizarListaAmigosAdicionados(){
@@ -33,8 +33,8 @@ function atualizarListaAmigosAdicionados(){
 function sortear(){
     let listaSorteados = document.querySelector('.prizeDraw__container')
     listaSorteados.innerHTML = '';
-    if (amigos.length % 2 != 0) {
-        alert('Quantidade de amigos deve ser par');
+    if (amigos.length < 4) {
+        alert('Quantidade de amigos deve ser maior que 3');
         return;
     }else{
         let amigosSecretos = [];
