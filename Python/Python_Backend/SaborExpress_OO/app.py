@@ -9,9 +9,13 @@ def main():
     restaurante_niniuta = Restaurante('Niniuta', 'Gourmet')
     
     
-    
+    bebida_coquinha_gelada = Bebida('Coquinha Gelada', 5.0, 'grande')
     bebida_vinho_lagar = Bebida('Vinho Branco Lagar', 64.0, 'grande')
     prato_risoto_limao_polvo = Prato('Risoto de limão com Polvo', 125, 'Risoto de limão siciliano com Polvo grelhado')
+    
+    restaurante_osteria.adicionar_bebida_no_cardapio(bebida_vinho_lagar)
+    restaurante_osteria.adicionar_bebida_no_cardapio(bebida_coquinha_gelada)
+    restaurante_osteria.adicionar_prato_no_cardapio(prato_risoto_limao_polvo)
     
     
     restaurante_osteria.receber_avaliacao('Spiga', 5)
@@ -28,7 +32,7 @@ def main():
 
 
     print(Restaurante.listar_restaurantes())
-    print(bebida_vinho_lagar, prato_risoto_limao_polvo, sep='\n')
+    restaurante_osteria.listar_cardapio()
 
 if __name__ == '__main__':
     main()

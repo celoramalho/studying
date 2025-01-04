@@ -8,6 +8,7 @@ class Restaurante:
         self._categoria = categoria.title()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
         
     
@@ -39,7 +40,17 @@ class Restaurante:
             return '-'
         soma_das_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)
         return round(soma_das_notas / len(self._avaliacao), 1)
+    
+    def adicionar_bebida_no_cardapio(self, bebida):
+        self._cardapio.append(bebida)
+        
+    def adicionar_prato_no_cardapio(self, prato):
+        self._cardapio.append(prato)
 
+    def listar_cardapio(self):
+        print(f'Cardapio de {self._nome}')
+        for item in self._cardapio:
+            print(item)
 
 # print(vars(restaurante_subuai))
 # {'nome': 'Subuai', 'categoria': 'Fast Food', 'ativo': True}
