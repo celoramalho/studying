@@ -7,6 +7,10 @@ class Restaurante:
         self.categoria = categoria
         self.ativo = False
         
+    
+    
+    def __str__(self):
+        return f'{self.nome} | {self.categoria} | {self.ativo}'
         
     
 restaurante_subuai = Restaurante('Subuai', 'Fast Food')
@@ -16,7 +20,7 @@ restaurante_subuai.ativo = True
 
 restaurantes = [restaurante_subuai, restaurante_osteria]
 
-print(restaurante_subuai.nome)
+print(restaurante_subuai)
 
 
 
