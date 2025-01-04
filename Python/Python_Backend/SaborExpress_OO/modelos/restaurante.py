@@ -1,3 +1,5 @@
+from modelos.avaliacao import Avalicao
+
 class Restaurante:
     restaurantes = [] # atributo de classe
     def __init__(self, nome, categoria): # Construtor
@@ -5,6 +7,7 @@ class Restaurante:
         self._nome = nome.title() #.upper()
         self._categoria = categoria.title()
         self._ativo = False
+        self._avaliacao = []
         Restaurante.restaurantes.append(self)
         
     
@@ -24,6 +27,10 @@ class Restaurante:
         
     def alterar_estado(self):
         self._ativo = not self._ativo
+        
+    def receber_avaliacao(self, cliente, nota):
+        avalicao = Avalicao(cliente, nota)
+        self._avaliacao.append(avalicao)
 
 
 # print(vars(restaurante_subuai))
