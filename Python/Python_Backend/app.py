@@ -1,33 +1,55 @@
-print("""
-      
-░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
-██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
-╚█████╗░███████║██████╦╝██║░░██║██████╔╝  █████╗░░░╚███╔╝░██████╔╝██████╔╝█████╗░░╚█████╗░╚█████╗░
-░╚═══██╗██╔══██║██╔══██╗██║░░██║██╔══██╗  ██╔══╝░░░██╔██╗░██╔═══╝░██╔══██╗██╔══╝░░░╚═══██╗░╚═══██╗
-██████╔╝██║░░██║██████╦╝╚█████╔╝██║░░██║  ███████╗██╔╝╚██╗██║░░░░░██║░░██║███████╗██████╔╝██████╔╝
-╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░
-      """) # https://fsymbols.com/
+import os
 
-print('1. Cadastrar restaurante')
-print('2. Listar restaurantes')
-print('3. Ativar restaurantes')
-print('4. Sair\n')
+def exibir_nome_do_app():
+    print("""
+        
+    ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
+    ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
+    ╚█████╗░███████║██████╦╝██║░░██║██████╔╝  █████╗░░░╚███╔╝░██████╔╝██████╔╝█████╗░░╚█████╗░╚█████╗░
+    ░╚═══██╗██╔══██║██╔══██╗██║░░██║██╔══██╗  ██╔══╝░░░██╔██╗░██╔═══╝░██╔══██╗██╔══╝░░░╚═══██╗░╚═══██╗
+    ██████╔╝██║░░██║██████╦╝╚█████╔╝██║░░██║  ███████╗██╔╝╚██╗██║░░░░░██║░░██║███████╗██████╔╝██████╔╝
+    ╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░
+        """) # https://fsymbols.com/
 
-opcao_escolhida = int(input('Escolha uma opção: '))
-#pcao_escolhida = int(opcao_escolhida)
-print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
-#print(type(opcao_escolhida))
+def exibir_menu_de_opcoes():
+    print('1. Cadastrar restaurante')
+    print('2. Listar restaurantes')
+    print('3. Ativar restaurantes')
+    print('4. Sair\n')
 
-if opcao_escolhida == 1:
-    print('Cadastrar restaurante')
-elif opcao_escolhida == 2:
-    print('Listar restaurantes')
-elif opcao_escolhida == 3:
-    print('Ativar restaurantes')
-elif opcao_escolhida == 4:
-    print('Encerrando programa')
-else:
-    print('Opção inválida')
+def escolher_opcao():
+    opcao_escolhida = int(input('Escolha uma opção: '))
+    #pcao_escolhida = int(opcao_escolhida)
+    print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
+    #print(type(opcao_escolhida))
+    if opcao_escolhida == 1:
+        print('Cadastrar restaurante')
+    elif opcao_escolhida == 2:
+        print('Listar restaurantes')
+    elif opcao_escolhida == 3:
+        print('Ativar restaurantes')
+    elif opcao_escolhida == 4:
+        finalizar_app()
+    else:
+        print('Opção inválida')
+
+
+def finalizar_app():
+    #os.system('cls') windows
+    os.system('clear') #mac e linux
+    print('Encerrando programa...\n')
+    
+def main():
+    exibir_nome_do_app()
+    exibir_menu_de_opcoes()
+    escolher_opcao()
+
+
+    
+if __name__ == '__main__':
+    main()
+    
+
 '''
 aspas simples tripla
 '''
