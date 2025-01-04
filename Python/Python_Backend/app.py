@@ -2,7 +2,7 @@ import os
 
 restaurantes = [{'nome': 'Subuai', 'categoria': 'Fast Food', 'ativo': True},
                 {'nome': 'Burger Ting', 'categoria': 'Fast Food', 'ativo': True},
-                {'nome': 'Niniuta', 'categoria': 'Culinária Brasileira', 'ativo': True},
+                {'nome': 'Niniuta', 'categoria': 'Culinária Brasileira', 'ativo': False},
                 {'nome': '74 Osteria', 'categoria': 'Osteria', 'ativo': True}]
 
 
@@ -40,7 +40,8 @@ def voltar_ao_menu_principal():
     
 def exibir_subtitulo(texto):
     os.system('clear')
-    print(f"\n{texto}")
+    linha = '-' * (len(texto) + 4)
+    print(f'{linha}\n. {texto} .\n{linha}')
     #print('-'*len(texto))
     
 def cadastrar_novo_restaurante():
@@ -56,18 +57,19 @@ def cadastrar_novo_restaurante():
 
 def listar_restaurantes():
     exibir_subtitulo('Listando restaurantes')
+    print('NOME'.ljust(21) + ' | ' + 'CATEGORIA'.ljust(20) + ' | ' + 'STATUS')
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        ativo = restaurante['ativo']
+        ativo = 'ativado' if restaurante['ativo'] else 'desativado'
         
-        print(f'.{nome_restaurante} - {categoria} - {ativo}')
+        print(f'.{nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
     voltar_ao_menu_principal()
 
 def exibir_menu_de_opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
-    print('3. Ativar restaurantes')
+    print('3. Alterar restaurantes')
     print('4. Sair\n')
 
 def finalizar_app():
