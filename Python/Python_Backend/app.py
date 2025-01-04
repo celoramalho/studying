@@ -45,6 +45,16 @@ def exibir_subtitulo(texto):
     #print('-'*len(texto))
     
 def cadastrar_novo_restaurante():
+    ''' Essa função é responsável por cadastrar um novo restaurante 
+    
+    Inputs:
+    - nome_do_restaurante: str
+    - categoria: str
+    
+    Outputs:
+    - Adiciona um novo restaurante na lista de restaurantes
+    
+    '''
     exibir_subtitulo('Cadastro de novos restaurantes')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
@@ -56,6 +66,7 @@ def cadastrar_novo_restaurante():
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
+    ''' Essa função é responsável por listar os restaurantes cadastrados '''
     exibir_subtitulo('Listando restaurantes')
     print('NOME'.ljust(21) + ' | ' + 'CATEGORIA'.ljust(20) + ' | ' + 'STATUS')
     for restaurante in restaurantes:
@@ -236,4 +247,23 @@ print("Coordenadas GPS:")
 print("Latitude:", coordenadas_gps[0])
 print("Longitude:", coordenadas_gps[1])
 
+"""
+
+
+#O método update() é outra forma válida de atualizar o valor de uma chave em um dicionário em Python.
+#livro.update({'preco': 69.90})
+
+
+"""    
+    Exercícios
+Crie uma docstring para a função exibir_nome_do_programa()
+Crie uma docstring para a função exibir_opcoes()
+Crie uma docstring para a função finalizar_app()
+Crie uma docstring para a função opcao_invalida()
+Crie uma docstring para a função exibir_subtitulo(texto)
+Crie uma docstring para a função cadastrar_novo_restaurante()
+Crie uma docstring para a função listar_restaurantes()
+Crie uma docstring para a função alternar_estado_restaurante()
+Crie uma docstring para a função escolher_opcao()
+Crie uma docstring para a função main()
 """
