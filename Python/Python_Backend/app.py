@@ -18,6 +18,21 @@ def exibir_nome_do_app():
         """) # https://fsymbols.com/
 
 
+def alterar_estado_restaurante():
+    exibir_subtitulo('Alterando estado do restaurante')
+    nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
+    restaurante_encontrado = False
+    
+    for restaurante in restaurantes:
+        if restaurante['nome'] == nome_restaurante:
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['ativo']
+            mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso!\n' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso!\n'
+            print(mensagem)
+            break
+    else:
+        print(f'Restaurante {nome_restaurante} nao encontrado!\n')
+    voltar_ao_menu_principal()
 
 def voltar_ao_menu_principal():
     input("\nDigite uma tecla para voltar ao menu principal ")
@@ -74,7 +89,7 @@ def escolher_opcao():
         elif opcao_escolhida == 2:
             listar_restaurantes()
         elif opcao_escolhida == 3:
-            print('Ativar restaurantes')
+            alterar_estado_restaurante()
         elif opcao_escolhida == 4:
             finalizar_app()
         else:
