@@ -65,6 +65,8 @@ function sortear(){
 function reiniciar(){
     amigos = [];
     atualizarListaAmigosAdicionados();
+    let listaSorteados = document.querySelector('.prizeDraw__container')
+    listaSorteados.innerHTML = '';
 }
 
 
