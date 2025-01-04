@@ -12,18 +12,23 @@ class Restaurante:
     def __str__(self):
         return f'{self._nome.ljust(20)} | {self._categoria.ljust(20)} | {self.ativo.ljust(20)}'
     
-    def listar_restaurantes():
+    @classmethod
+    def listar_restaurantes(cls):
         print('NOME'.ljust(20) + ' | ' + 'CATEGORIA'.ljust(20) + ' | ' + 'STATUS')
-        for restaurante in Restaurante.restaurantes:
+        for restaurante in cls.restaurantes:
             print(restaurante)
             
     @property
     def ativo(self):
         return '☑ ativado' if self._ativo else '☒ desativado' #https://coolsymbol.com/
         
+    def alterar_estado(self):
+        self._ativo = not self._ativo
     
 restaurante_subuai = Restaurante('subuai', 'fast food')
 restaurante_osteria = Restaurante('74 Osteria', 'Osteria')
+
+restaurante_subuai.alterar_estado()
 
 
 print(Restaurante.listar_restaurantes())
