@@ -1,5 +1,11 @@
 import os
 
+restaurantes = [{'nome': 'Subuai', 'categoria': 'Fast Food', 'ativo': True},
+                {'nome': 'Burger Ting', 'categoria': 'Fast Food', 'ativo': True},
+                {'nome': 'Niniuta', 'categoria': 'Culinária Brasileira', 'ativo': False},
+                {'nome': '74 Osteria', 'categoria': 'Osteria', 'ativo': True}]
+
+
 def exibir_nome_do_app():
     print("""
         
@@ -11,44 +17,110 @@ def exibir_nome_do_app():
     ╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░
         """) # https://fsymbols.com/
 
+
+def alterar_estado_restaurante():
+    exibir_subtitulo('Alterando estado do restaurante')
+    nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
+    restaurante_encontrado = False
+    
+    for restaurante in restaurantes:
+        if restaurante['nome'] == nome_restaurante:
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['ativo']
+            mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso!\n' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso!\n'
+            print(mensagem)
+            break
+    else:
+        print(f'Restaurante {nome_restaurante} nao encontrado!\n')
+    voltar_ao_menu_principal()
+
+def voltar_ao_menu_principal():
+    input("\nDigite uma tecla para voltar ao menu principal ")
+    main()
+    
+def exibir_subtitulo(texto):
+    os.system('clear')
+    linha = '-' * (len(texto) + 4)
+    print(f'{linha}\n. {texto} .\n{linha}')
+    #print('-'*len(texto))
+    
+def cadastrar_novo_restaurante():
+    ''' Essa função é responsável por cadastrar um novo restaurante 
+    
+    Inputs:
+    - nome_do_restaurante: str
+    - categoria: str
+    
+    Outputs:
+    - Adiciona um novo restaurante na lista de restaurantes
+    
+    '''
+    exibir_subtitulo('Cadastro de novos restaurantes')
+    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    categoria = input(f'Digite a categoria do restaurante {nome_do_restaurante}: ')
+    dados_do_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria, 'ativo': False}
+
+    restaurantes.append(dados_do_restaurante)
+    
+    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
+    voltar_ao_menu_principal()
+
+def listar_restaurantes():
+    ''' Essa função é responsável por listar os restaurantes cadastrados '''
+    exibir_subtitulo('Listando restaurantes')
+    print('NOME'.ljust(21) + ' | ' + 'CATEGORIA'.ljust(20) + ' | ' + 'STATUS')
+    for restaurante in restaurantes:
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo = 'ativado' if restaurante['ativo'] else 'desativado'
+        
+        print(f'.{nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
+    voltar_ao_menu_principal()
+
 def exibir_menu_de_opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
-    print('3. Ativar restaurantes')
+    print('3. Alterar restaurantes')
     print('4. Sair\n')
-
-def escolher_opcao():
-    opcao_escolhida = int(input('Escolha uma opção: '))
-    #pcao_escolhida = int(opcao_escolhida)
-    print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
-    #print(type(opcao_escolhida))
-    if opcao_escolhida == 1:
-        print('Cadastrar restaurante')
-    elif opcao_escolhida == 2:
-        print('Listar restaurantes')
-    elif opcao_escolhida == 3:
-        print('Ativar restaurantes')
-    elif opcao_escolhida == 4:
-        finalizar_app()
-    else:
-        print('Opção inválida')
-
 
 def finalizar_app():
     #os.system('cls') windows
-    os.system('clear') #mac e linux
-    print('Encerrando programa...\n')
-    
+    exibir_subtitulo('Finalizando programa...')
+  
+def opcao_invalida():
+    print('Opção inválida\n')
+    voltar_ao_menu_principal()
+
+def escolher_opcao():
+    try:
+        opcao_escolhida = int(input('Escolha uma opção: '))
+        #pcao_escolhida = int(opcao_escolhida)
+        print(f'Você escolheu: {opcao_escolhida}') #interpolação de string
+        #print(type(opcao_escolhida))
+        if opcao_escolhida == 1:
+            cadastrar_novo_restaurante()
+        elif opcao_escolhida == 2:
+            listar_restaurantes()
+        elif opcao_escolhida == 3:
+            alterar_estado_restaurante()
+        elif opcao_escolhida == 4:
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida()
+        
 def main():
+    os.system('clear')
     exibir_nome_do_app()
     exibir_menu_de_opcoes()
     escolher_opcao()
 
-
-    
 if __name__ == '__main__':
     main()
     
+
+#'aspas simples ignora espaços no inicio e fim?'
 
 '''
 aspas simples tripla
@@ -146,3 +218,52 @@ Namespaces são uma grande ideia — vamos fazer mais dessas!\
 
 
 # __dunder__ methods
+
+
+"""
+# Criando uma lista de compras
+lista_de_compras = ["Maçã", "Banana", "Leite", "Pão", "Queijo"]
+
+# Adicionando um item à lista
+lista_de_compras.append("Ovos")
+
+# Removendo um item da lista
+lista_de_compras.remove("Banana")
+
+# Exibindo a lista
+print("Lista de Compras:")
+for item in lista_de_compras:
+    print("- " + item)
+
+"""
+
+
+"""
+# Definindo uma tupla de coordenadas geográficas
+coordenadas_gps = (40.7128, -74.0060)
+
+# Exibindo as coordenadas
+print("Coordenadas GPS:")
+print("Latitude:", coordenadas_gps[0])
+print("Longitude:", coordenadas_gps[1])
+
+"""
+
+
+#O método update() é outra forma válida de atualizar o valor de uma chave em um dicionário em Python.
+#livro.update({'preco': 69.90})
+
+
+"""    
+    Exercícios
+Crie uma docstring para a função exibir_nome_do_programa()
+Crie uma docstring para a função exibir_opcoes()
+Crie uma docstring para a função finalizar_app()
+Crie uma docstring para a função opcao_invalida()
+Crie uma docstring para a função exibir_subtitulo(texto)
+Crie uma docstring para a função cadastrar_novo_restaurante()
+Crie uma docstring para a função listar_restaurantes()
+Crie uma docstring para a função alternar_estado_restaurante()
+Crie uma docstring para a função escolher_opcao()
+Crie uma docstring para a função main()
+"""
