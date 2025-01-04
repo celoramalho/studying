@@ -11,7 +11,9 @@ def main():
     
     bebida_coquinha_gelada = Bebida('Coquinha Gelada', 5.0, 'grande')
     bebida_vinho_lagar = Bebida('Vinho Branco Lagar', 64.0, 'grande')
+    bebida_coquinha_gelada.aplicar_desconto()
     prato_risoto_limao_polvo = Prato('Risoto de limão com Polvo', 125, 'Risoto de limão siciliano com Polvo grelhado')
+    prato_risoto_limao_polvo.aplicar_desconto()
     
     restaurante_osteria.adicionar_item_no_cardapio(bebida_vinho_lagar)
     restaurante_osteria.adicionar_item_no_cardapio(bebida_coquinha_gelada)
@@ -32,7 +34,7 @@ def main():
 
 
     print(Restaurante.listar_restaurantes())
-    restaurante_osteria.listar_cardapio()
+    restaurante_osteria.exibir_cardapio
 
 if __name__ == '__main__':
     main()
