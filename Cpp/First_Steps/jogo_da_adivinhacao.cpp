@@ -7,23 +7,42 @@ int main(){
     cout << "* Bem-Vindos ao jogo da adivinhação *" << endl;
     cout << "* ***********************************" << endl;
 
+    cout << "Escolha seu nível de dificuldade: " << endl;
+    cout << "(F) - Facil" << endl;
+    cout << "(M) - Medio" << endl;
+    cout << "(D) - Dificil" << endl;
+
+    char dificuldade;
+    cin >> dificuldade;
+    int numero_de_tentativas;
+
+    if (dificuldade == 'F'){
+        numero_de_tentativas = 15;
+    }
+    else if(dificuldade == 'M'){
+        numero_de_tentativas = 10;
+    }
+    else{
+        numero_de_tentativas = 5;
+    }
+
+
     const int NUMERO_SECRETO = 42; // IMUTAVEL
     // cout << "O número secreto é " << numero_secreto << endl;
 
     bool nao_acertou = true;
-    int tentativas = 0;
+    int tentativas = 1;
 
     double pontos = 1000.0;
 
-    while(nao_acertou){
-        tentativas++;
+    for(tentativas; tentativas <= numero_de_tentativas; tentativas++){
         int chute;
-        cout << "####Tentativa " << tentativas << "####" << endl;
+        cout << "\n#### Tentativa " << tentativas << " ####" << endl;
         cout << "Qual seu chute: ";
         cin >> chute;
 
         double pontos_perdidos = abs(chute - NUMERO_SECRETO)/2.0;
-        pontos = pontos - pontos_perdidos;
+        pontos -= pontos_perdidos;
 
         bool acertou = (chute == NUMERO_SECRETO);
         bool maior = chute > NUMERO_SECRETO;
@@ -31,6 +50,7 @@ int main(){
         if (acertou){
             cout << "Parabéns! Vocé acertou!" << endl;
             nao_acertou = false;
+            break;
         }
         else if(maior){
             cout << "O seu chute foi maior que o número secreto" << endl;
@@ -39,9 +59,14 @@ int main(){
             cout << "O seu chute foi menor que o número secreto" << endl;
         }
     }
+
     cout << "Fim de jogo" << endl;
-    cout << "Você acertou o número secreto em " << tentativas << " tentativas" << endl;
-    cout.precision(2);
-    cout << fixed;
-    cout << "Sua pontuação foi de: " << pontos << " pontos." << endl;
+    if (nao_acertou){
+        cout << "Puxa, vocé errou o número secreto era " << NUMERO_SECRETO << endl;
+    }else{
+        cout << "Você acertou o número secreto em " << tentativas << " tentativas" << endl;
+        cout.precision(2);
+        cout << fixed;
+        cout << "Sua pontuação foi de: " << pontos << " pontos." << endl;
+    }
 }
