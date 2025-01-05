@@ -1,4 +1,5 @@
-from modelos.avaliacao import Avalicao
+from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante:
     restaurantes = [] # atributo de classe
@@ -8,16 +9,17 @@ class Restaurante:
         self._categoria = categoria.title()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
         
     
     
     def __str__(self):
-        return f'{self._nome.ljust(20)} | {self._categoria.ljust(20)} | {self.ativo.ljust(20)}'
+        return f'{self._nome.ljust(20)} | {self._categoria.ljust(20)} | {str(self.media_avaliacoes).ljust(20)} | {self.ativo}'
     
     @classmethod
     def listar_restaurantes(cls):
-        print('NOME'.ljust(20) + ' | ' + 'CATEGORIA'.ljust(20) + ' | ' + 'STATUS')
+        print('NOME'.ljust(20) + ' | ' + 'CATEGORIA'.ljust(20) + ' | '+ 'AVALIAÇÃO'.ljust(20) + ' | ' + 'STATUS')
         for restaurante in cls.restaurantes:
             print(restaurante)
             
@@ -29,9 +31,34 @@ class Restaurante:
         self._ativo = not self._ativo
         
     def receber_avaliacao(self, cliente, nota):
-        avalicao = Avalicao(cliente, nota)
-        self._avaliacao.append(avalicao)
+        if 0 < nota <= 5:
+            avalicao = Avaliacao(cliente, nota)
+            self._avaliacao.append(avalicao)
+    
+    @property  
+    def media_avaliacoes(self):
+        if not self._avaliacao:
+            return '-'
+        soma_das_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)
+        return round(soma_das_notas / len(self._avaliacao), 1)
+    
+    def adicionar_item_no_cardapio(self, item):
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
 
+    @property
+    def exibir_cardapio(self):
+        print(f'\nCardapio do Restaurante {self._nome}')
+        for index, item in enumerate(self._cardapio, start=1):
+            print(f'{index} - {item}') #print(index, item)
+        #if hasattr(self, 'tamanho'):
+"""
+def adicionar_bebida_no_cardapio(self, bebida):
+    self._cardapio.append(bebida)
+    
+def adicionar_prato_no_cardapio(self, prato):
+    self._cardapio.append(prato)
+"""
 
 # print(vars(restaurante_subuai))
 # {'nome': 'Subuai', 'categoria': 'Fast Food', 'ativo': True}
