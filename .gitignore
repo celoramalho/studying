@@ -2,6 +2,7 @@ temp/
 env-automaciones/
 .venv/
 env-automaciones2/
+**/*Zone.Identifier
 **/__pycache__/
 **/venv/
 Python/Learning_Some_Libraries/private_data.txt
