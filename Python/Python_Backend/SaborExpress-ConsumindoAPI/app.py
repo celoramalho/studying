@@ -1,4 +1,5 @@
 import requests
+import json
 
 url = 'https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json' #endpoint
 
@@ -22,12 +23,16 @@ if response.status_code == 200:
             "description": item['description']
         })
     
-    print(dados_restaurante)
     
 else:
     print(f'O erro foi {response.status_code}')
 
-print(dados_restaurante['McDonald’s']) # Alt + 0, 1, 4, 6 ’
+for nome_do_restaurante, dados in dados_restaurante.items():
+    nome_do_arquivo = f'{nome_do_restaurante}.json'
+    with open(nome_do_arquivo, 'w') as arquivo_restaurante:
+        json.dump(dados, arquivo_restaurante, indent=4)
+
+
 
 
 """
@@ -38,5 +43,8 @@ print(response)
 400: Requisição inválida
 404: Requisição não encontrada
 500: Erro Interno
+
+
+print(dados_restaurante['McDonald’s']) # Alt + 0, 1, 4, 6 ’
 
 """
