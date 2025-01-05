@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -26,9 +28,9 @@ int main(){
         numero_de_tentativas = 5;
     }
 
-
-    const int NUMERO_SECRETO = 42; // IMUTAVEL
-    // cout << "O número secreto é " << numero_secreto << endl;
+    srand(time(NULL));
+    const int NUMERO_SECRETO = rand() % 100; // IMUTAVEL
+    // cout << "O número secreto é " << NUMERO_SECRETO << endl;
 
     bool nao_acertou = true;
     int tentativas = 1;
