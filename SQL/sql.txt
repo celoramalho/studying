@@ -25,3 +25,34 @@ SGBDs
 
 https://sqliteonline.com/
 https://www.alura.com.br/artigos/o-que-e-sql
+
+
+CREATE TABLE tabelaclientes(ID_Cliente INT PRIMARY KEY,
+                            Nome_Cliente VARCHAR (250),
+                            Informacoes_de_Contato VARCHAR (250));
+
+
+SELECT * From tabelaclientes
+
+ALTER TABLE tabelaclientes ADD Endereço_Cliente VARCHAR (250);
+
+DROP TABLE tabelaclientes
+
+CREATE TABLE tabelacategorias (ID_Categoria INT PRIMARY KEY, Nome_Categoria VARCHAR (250), Descricao_Categoria TEXT);
+
+CREATE TABLE tabelaprodutos (
+  ID_Produto INT PRIVATE KEY,
+  Nome_do_Produto VARCHAR (250),
+  Descrição TEXT,
+  Categoria INT,
+  Preco_da_Compra DECIMAL (10,2),
+  Unidade VARCHAR (50),
+  Fornecedor INT,
+  Data_de_Inclusao DATE,
+  FOREIGN KEY (Categoria) REFERENCES tabelacategorias (id_categoria),
+  FOREIGN KEY (Fornecedor) REFERENCES tabelafornecedores (id));
+
+
+SELECT * FROM tabelaprodutos;
+
+Chave estrangeira sempre ligada a uma chave primária.
