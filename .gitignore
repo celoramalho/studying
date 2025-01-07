@@ -11,3 +11,5 @@ Python/Learning_Some_Libraries/test_users_data.txt
 Python/Learning_Some_Libraries/test_users_data.yaml
 Python/Learning_Some_Libraries/test_users_data.yml
 **/*.exe
+
+.vscode/
