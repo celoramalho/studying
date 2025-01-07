@@ -3,7 +3,7 @@
 #include <ctime>
 
 using namespace std;
-
+// g++ jogo_da_adivinhacao.cpp -o jogo_da_adivinhacao
 int main(){
     cout << "*************************************" << endl;
     cout << "* Bem-Vindos ao jogo da adivinhação *" << endl;
