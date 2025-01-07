@@ -1,0 +1,27 @@
+Structured Query Language (SQL)
+
+1. Principais Categorias de SQL
+
+
+1.1. Data Definition Language (DDL)
+Define ou altera a estrutura do banco de dados.
+
+1.2. Data Manipulation Language (DML)
+Manipula dados dentro das tabelas.
+
+1.3. Data Query Language (DQL)
+Consulta e recupera dados das tabelas.
+
+1.4. Data Control Language (DCL)
+Controla permissões e segurança do banco de dados.
+
+1.5. Transaction Control Language (TCL)
+Controla transações no banco de dados.
+
+
+
+SGBDs
+
+
+https://sqliteonline.com/
+https://www.alura.com.br/artigos/o-que-e-sql
