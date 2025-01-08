@@ -231,3 +231,5 @@ DELETE FROM tabelafuncionariosdesafio WHERE salario < 4000;
 SELECT * FROM tabelafuncionariosdesafio WHERE departamento = 'Vendas' AND salario >= 6000;
 
 DROP TABLE tabelafuncionariosdesafio;
+
+https://cursos.alura.com.br/course/sqlite-online-conhecendo-instrucoes-sql/task/160998
