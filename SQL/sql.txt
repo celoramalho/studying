@@ -233,3 +233,7 @@ SELECT * FROM tabelafuncionariosdesafio WHERE departamento = 'Vendas' AND salari
 DROP TABLE tabelafuncionariosdesafio;
 
 https://cursos.alura.com.br/course/sqlite-online-conhecendo-instrucoes-sql/task/160998
+
+UPDATE VENDEDORES
+SET COMISSÃO  = COMISSÃO + 0.03
+WHERE COMISSÃO = (SELECT min(COMISSÃO) FROM VENDEDORES)
