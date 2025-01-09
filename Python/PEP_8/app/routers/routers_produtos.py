@@ -17,6 +17,7 @@ contador_produto: int = 1
 # Histórico de compras em memória
 historico_de_compras: Dict[int, List[int]] = {}
 
+
 @router.post("/produtos/", response_model=Produto)
 def criar_produto(produto: CriarProduto) -> Produto:
     """
@@ -46,7 +47,9 @@ def listar_produtos() -> List[Produto]:
 
 # Rota para simular a criação do histórico de compras de um usuário
 @router.post("/historico_compras/{usuario_id}")
-def adicionar_historico_compras(usuario_id: int, compras: HistoricoCompras) -> Dict[str, str]:
+def adicionar_historico_compras(
+    usuario_id: int, compras: HistoricoCompras
+) -> Dict[str, str]:
     """
     Adiciona ou atualiza o histórico de compras de um usuário.
     Args:
@@ -66,11 +69,14 @@ def adicionar_historico_compras(usuario_id: int, compras: HistoricoCompras) -> D
 def recomendar_produtos(usuario_id: int, preferencias: Preferencias) -> List[Produto]:
     """
     Recomenda produtos com base no histórico de compras e preferências do usuário.
+
     Args:
         usuario_id (int): O ID do usuário para o qual as recomendações serão feitas.
         preferencias (Preferencias): O objeto contendo as preferências do usuário, como categorias e tags.
+
     Raises:
         HTTPException: Se o histórico de compras não for encontrado para o usuário.
+
     Returns:
         List[Produto]: Uma lista de produtos recomendados com base no histórico de compras e preferências.
     """
@@ -90,13 +96,17 @@ def recomendar_produtos(usuario_id: int, preferencias: Preferencias) -> List[Pro
     ]
 
     # Filtrar as recomendações com base nas preferências
-    produtos_recomendados = [
-        p for p in produtos_recomendados if p.categoria in preferencias.categorias
+    produtos_recomendados_categorias = [
+        produto
+        for produto in produtos_recomendados
+        if produto.categoria in preferencias.categorias
     ]  # Preferencias de categorias
-    produtos_recomendados = [
-        p
-        for p in produtos_recomendados
-        if any(tag in preferencias.tags for tag in p.tags)
-    ]  # Preferencias de tags
 
-    return produtos_recomendados
+    produtos_recomendados_filtrados = []
+    for produto in produtos_recomendados_categorias:
+        for tag in produto.tags:
+            if tag in preferencias.tags:
+                produtos_recomendados_filtrados.append(produto)
+                break
+
+    return produtos_recomendados_filtrados
