@@ -1,15 +1,11 @@
-from typing import Dict
-from fastapi import FastAPI
-from app.routers import routers_produtos, routers_usuarios
-
+from typing import Dict  # Primeiro: Biblioteca padrao do Python
+from fastapi import FastAPI  # Segundo: Biblioteca de terceiros
+from app.routers import routers_produtos, routers_usuarios  # Terceiro: Biblioteca interna / importação local
 
 # Python Enhancement Proposal 8 https://peps.python.org/pep-0008/
-#snake_case: usado para nomes de variáveis, funções e métodos;
-#PascalCase: utilizado para nomes de classes;
-#SCREAMING_SNAKE_CASE: reservado para constantes.
-#Tipar fortemente
 
-MENSAGEM_HOME: str    ="Bem-vindo à API de Recomendação de Produtos"
+# Tipar fortemente
+MENSAGEM_HOME: str = "Bem-vindo à API de Recomendação de Produtos"
 
 # Criando o App
 app = FastAPI()
@@ -17,6 +13,7 @@ app = FastAPI()
 app.include_router(routers_usuarios.router)
 app.include_router(routers_produtos.router)
 # Iniciando o servidor
+
 
 @app.get("/")
 def home() -> Dict[str, str]:

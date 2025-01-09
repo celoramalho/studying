@@ -1,5 +1,5 @@
-from pydantic import BaseModel
 from typing import List
+from pydantic import BaseModel
 
 
 # Modelo base para produto
@@ -10,8 +10,9 @@ class ProdutoBase(BaseModel):
 
 
 # Modelo para criar um produto
-class CriarProduto(ProdutoBase): #PascalCase / CapWords
+class CriarProduto(ProdutoBase):  # PascalCase / CapWords
     pass
+
 
 # Modelo de produto com ID
 class Produto(ProdutoBase):
