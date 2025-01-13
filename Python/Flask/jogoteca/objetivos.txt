@@ -1,0 +1,11 @@
+Dar os primeiros passos com o Flask, mini framework Python
+
+
+
+Listar Jogos
+
+Cadastrar novos jogos
+
+Fazer login
+
+Restringir acesso
