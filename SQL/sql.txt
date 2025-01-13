@@ -237,3 +237,26 @@ https://cursos.alura.com.br/course/sqlite-online-conhecendo-instrucoes-sql/task/
 UPDATE VENDEDORES
 SET COMISSÃO  = COMISSÃO + 0.03
 WHERE COMISSÃO = (SELECT min(COMISSÃO) FROM VENDEDORES)
+
+
+
+
+SELECT cargo, COUNT(*) qtd FROM HistoricoEmprego GROUP BY cargo HAVING qtd >=2;
+
+SELECT nome, LENGTH(cpf) qtd FROM Colaboradores WHERE qtd = 11;
+
+
+SELECT count(*), length(cpf) qtd FROM Colaboradores WHERE qtd = 11;
+
+SELECT ('A pessoa colaboradora ' || nome || ' de CPF ' || cpf || ' possui o seguinte endereço: ' || endereco) AS TEXTO FROM Colaboradores;
+UPPER e LOWER
+
+SELECT AVG(faturamento_bruto), ROUND (AVG(faturamento_bruto),2) from faturamento;
+
+SELECT id_colaborador, cargo, salario,
+CASE
+	WHEN salario < 3000 THEN 'Baixo'
+    WHEN salario BETWEEN 3000 AND 6000 THEN 'Médio'
+    ELSE 'Alto'
+    END AS Categoria_salario
+   FROM HistoricoEmprego;
