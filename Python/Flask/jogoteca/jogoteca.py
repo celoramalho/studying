@@ -7,6 +7,19 @@ class Jogo:
         self.categoria = categoria
         self.console = console
 
+class Usuario:
+    def __init__(self, nome, nickname, senha):
+        self.nome = nome
+        self.nickname = nickname
+        self.senha = senha
+
+usuario1 = Usuario('Hermione', 'hermistlaviosa', 'alohomora')
+usuario2 = Usuario('Gandalf', 'thegreymf', 'mellon')
+usuario3 = Usuario('Anakin', 'anakinvader', 'power')
+
+usuarios = { usuario1.nickname : usuario1,
+             usuario2.nickname : usuario2,
+             usuario3.nickname : usuario3 }
 
 jogo1 = Jogo("Tetris", "Puzzle", "Atari")
 jogo2 = Jogo("God of War", "Rack n Slash", "PS2")
@@ -46,14 +59,17 @@ def login():
 
 @app.route('/autenticar', methods = ['POST',])
 def autenticar():
-    if 'alohomora' == request.form['senha']:
-        session['usuario_logado'] = request.form['usuario']
-        flash(f'{session['usuario_logado']} logado com sucesso!')
-        proxima_pagina = request.form['proxima']
-        return redirect(proxima_pagina)
-    else:
-        flash('Usuário ou senha incorretos!')
-        return redirect(url_for('login'))
+
+    if request.form['usuario'] in usuarios.keys():
+        usuario = usuarios[request.form['usuario']]
+        if request.form['senha'] == usuario.senha:
+            session['usuario_logado'] = usuario.nickname
+            flash(f'{session['usuario_logado']} logado com sucesso!')
+            proxima_pagina = request.form['proxima']
+            return redirect(proxima_pagina)
+        
+    flash('Usuário ou senha incorretos!')
+    return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():
