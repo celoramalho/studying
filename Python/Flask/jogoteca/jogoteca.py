@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 
-
 class Jogo:
     def __init__(self, nome, categoria, console):
         self.nome = nome
@@ -29,7 +28,6 @@ lista_jogos = [jogo1, jogo2, jogo3]
 
 app = Flask(__name__)
 app.secret_key = 'espiga'
-
 
 @app.route("/")
 def index():
